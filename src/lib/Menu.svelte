@@ -2,16 +2,16 @@
   import { initialised, showMenu } from './stores.js';
 
   let showInfoPanel = false;
-  
+
   let initialisedValue;
-  	initialised.subscribe(value => {
-		initialisedValue = value;
-	});
+  initialised.subscribe((value) => {
+    initialisedValue = value;
+  });
 
   let showMenuValue;
-	showMenu.subscribe(value => {
-		showMenuValue = value;
-	});
+  showMenu.subscribe((value) => {
+    showMenuValue = value;
+  });
 
   function start() {
     initialised.set(true);
@@ -31,7 +31,7 @@
   }
 
   function toggleMenu() {
-    showMenu.set(!showMenuValue);
+    showMenu.update((n) => !n);
     showInfoPanel = false;
   }
 
@@ -40,31 +40,41 @@
   }
 </script>
 
-<main>
-  {#if showMenuValue}
-    {#if !initialisedValue}
+{#if showMenuValue}
+  {#if !initialisedValue}
     <button on:click={start}>Start</button>
     <button on:click={toggleShowInfoPanel}>Info</button>
-    {:else}
+  {:else}
     <button on:click={resume}>Resume</button>
     <button on:click={reset}>Reset</button>
     <button on:click={toggleShowInfoPanel}>Info</button>
-    {/if}
-  {:else}
-    <button on:click={toggleMenu}>Menu</button>
   {/if}
+{:else}
+  <button id="menu" on:click={toggleMenu}>=</button>
+{/if}
 
-  {#if showInfoPanel}
-    <div>
-      <h1>Info</h1>
-      <p>
-        This is a simple Svelte app.
-      </p>
-    </div>
-  {/if}
-</main>
+{#if showInfoPanel}
+  <div id="info">
+    <h1>Info</h1>
+    <p>This is a simple Svelte app.</p>
+    <p>It uses the Svelte framework.</p>
+    <button on:click={toggleShowInfoPanel}>x</button>
+  </div>
+{/if}
 
 <style>
+  #menu {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+  }
+  #info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   button {
     font-family: inherit;
     font-size: inherit;
