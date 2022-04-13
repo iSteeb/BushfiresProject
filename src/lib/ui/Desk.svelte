@@ -1,9 +1,12 @@
 <script>
   import Alerts from './Alerts.svelte';
+  import { fade } from 'svelte/transition';
 </script>
 
-<img src="src/assets/background.png" alt="bg" />
-<Alerts />
+<div id="container" transition:fade={{ delay: 1000, duration: 1000 }}>
+  <img src="src/assets/background.png" alt="bg" />
+  <Alerts />
+</div>
 
 <style>
   img {

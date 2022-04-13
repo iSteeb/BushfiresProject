@@ -1,15 +1,18 @@
 <script>
   import { state } from '../stores.js';
+  import { fade } from 'svelte/transition';
 
   let currentTime = 0;
   export let duration = 10;
+  let progressed = false;
 
-  $: if (currentTime >= duration && $state == 1) {
+  $: if (currentTime >= duration && !progressed) {
+    progressed = true;
     state.update((n) => n + 1);
   }
 </script>
 
-{#if $state}
+<div id="container" transition:fade={{ delay: 1000, duration: 1000 }}>
   <video
     id="bgvid"
     autoplay
@@ -17,7 +20,7 @@
     bind:currentTime
     src="src/assets/animation.mp4"
     type="video/mp4" />
-{/if}
+</div>
 
 <style>
   #bgvid {

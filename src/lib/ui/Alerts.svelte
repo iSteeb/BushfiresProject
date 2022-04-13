@@ -1,15 +1,23 @@
 <script>
-  import { scenario } from '../stores.js';
+  import { scenario, state } from '../stores.js';
+  $: if ($scenario.length > 3) {
+    state.update((n) => n + 1);
+  }
 </script>
 
-<div>
+<div id="container">
+  <button
+    on:click={() => {
+      $scenario = ['next', ...$scenario];
+    }}>Next</button>
+
   {#each $scenario as alert}
     <p>{alert}</p>
   {/each}
 </div>
 
 <style>
-  div {
+  #container {
     position: absolute;
     width: 100vw;
     text-align: center;

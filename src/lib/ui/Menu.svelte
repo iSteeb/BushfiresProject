@@ -1,71 +1,84 @@
 <script>
-  import { state } from '../stores.js';
+  import { state, scenario } from '../stores.js';
   import { clickOutside } from './click_outside.js';
 
   let showInfoPanel = false;
   let showMenu = true;
 </script>
 
-{#if showMenu}
-  {#if $state == 0}
+<div id="container">
+  {#if showMenu}
+    {#if $state == 0}
+      <button
+        on:click={() => {
+          state.update((n) => n + 1);
+          showMenu = false;
+          showInfoPanel = false;
+        }}>Start</button>
+    {:else}
+      <button
+        on:click={() => {
+          showMenu = false;
+          showInfoPanel = false;
+        }}>Resume</button>
+      <button
+        on:click={() => {
+          state.set(0);
+          showMenu = true;
+          showInfoPanel = false;
+          scenario.set([]);
+        }}>Reset</button>
+    {/if}
     <button
       on:click={() => {
-        state.update((n) => n + 1);
-        showMenu = false;
-        showInfoPanel = false;
-      }}>Start</button>
+        showInfoPanel = !showInfoPanel;
+      }}>Info</button>
   {:else}
     <button
+      id="menuButton"
       on:click={() => {
-        showMenu = false;
+        showMenu = !showMenu;
         showInfoPanel = false;
-      }}>Resume</button>
-    <button
-      on:click={() => {
-        state.set(0);
-        showMenu = true;
-        showInfoPanel = false;
-      }}>Reset</button>
+      }}>=</button>
   {/if}
-  <button
-    on:click={() => {
-      showInfoPanel = !showInfoPanel;
-    }}>Info</button>
-{:else}
-  <button
-    id="menu"
-    on:click={() => {
-      showMenu = !showMenu;
-      showInfoPanel = false;
-    }}>=</button>
-{/if}
 
-{#if showInfoPanel}
-  <div
-    id="info"
-    use:clickOutside
-    on:outclick={() => {
-      showInfoPanel = false;
-    }}>
-    <h1>Info</h1>
-    <p>
-      This is a simple Svelte app.This is a simple Svelte app.This is a simple
-      Svelte app.This is a simple Svelte app.This is a simple Svelte app.This is
-      a simple Svelte app.This is a simple Svelte app.This is a simple Svelte
-      app.
-    </p>
-  </div>
-{/if}
+  {#if showInfoPanel}
+    <div
+      id="infoButton"
+      use:clickOutside
+      on:outclick={() => {
+        showInfoPanel = false;
+      }}>
+      <h1>Info</h1>
+      <p>
+        This is a simple Svelte app.This is a simple Svelte app.This is a simple
+        Svelte app.This is a simple Svelte app.This is a simple Svelte app.This
+        is a simple Svelte app.This is a simple Svelte app.This is a simple
+        Svelte app.
+      </p>
+    </div>
+  {/if}
+</div>
 
 <style>
-  #menu {
+  #container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  #menuButton {
     position: absolute;
     top: 0%;
     left: 0%;
     transform: translate(0%, 0%);
     z-index: 999;
   }
-  #info {
+
+  #infoButton {
     position: absolute;
     background-color: grey;
     border-width: 1px;
