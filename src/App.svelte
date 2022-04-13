@@ -1,18 +1,20 @@
 <script>
-  import Menu from './lib/Menu.svelte';
-  import Desk from './lib/Desk.svelte';
-  import { initialised } from './lib/stores.js';
-
-  let initialisedValue;
-  initialised.subscribe((value) => {
-    initialisedValue = value;
-  });
+  import Menu from './lib/ui/Menu.svelte';
+  import { state } from './lib/stores.js';
+  import Intro from './lib/ui/Intro.svelte';
+  import Desk from './lib/ui/Desk.svelte';
+  import { fade } from 'svelte/transition';
 </script>
 
 <div id="menu"><Menu /></div>
-
-{#if initialisedValue}
-  <Desk />
+{#if $state == 1}
+  <div transition:fade={{ delay: 1000, duration: 1000 }}>
+    <Intro duration={1} />
+  </div>
+{:else if $state == 2}
+  <div transition:fade={{ delay: 1000, duration: 1000 }}><Desk /></div>
+  <!-- {:else if $state == 3}
+  <Fin /> -->
 {/if}
 
 <style>

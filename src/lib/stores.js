@@ -1,4 +1,4 @@
 import { writable } from 'svelte/store';
 
-export const initialised = writable(false);
-export const showMenu = writable(true);
+export const state = writable(0); // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
+export const scenario = writable(['Saab', 'Volvo', 'BMW']);
