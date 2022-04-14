@@ -4,17 +4,16 @@
   import Intro from './lib/ui/Intro.svelte';
   import Desk from './lib/ui/Desk.svelte';
   import Fin from './lib/ui/Fin.svelte';
+  const scene = [
+    { state: 0, component: false },
+    { state: 1, component: Intro },
+    { state: 2, component: Desk },
+    { state: 3, component: Fin }
+  ];
 </script>
 
 <Menu />
-
-{#if $state == 1}
-  <Intro duration={1} />
-{:else if $state == 2}
-  <Desk />
-{:else if $state == 3}
-  <Fin />
-{/if}
+<svelte:component this={scene[$state].component} duration={1} />
 
 <style>
 </style>
