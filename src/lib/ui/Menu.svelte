@@ -11,7 +11,7 @@
     {#if $state == 0}
       <button
         on:click={() => {
-          state.update((n) => n + 1);
+          state.set(1);
           showMenu = false;
           showInfoPanel = false;
         }}>Start</button>
@@ -46,9 +46,7 @@
     <div
       id="infoButton"
       use:clickOutside
-      on:outclick={() => {
-        showInfoPanel = false;
-      }}>
+      on:outclick={() => (showInfoPanel = false)}>
       <h1>Info</h1>
       <p>
         This is a simple Svelte app.This is a simple Svelte app.This is a simple

@@ -4,11 +4,9 @@
 
   let currentTime = 0;
   export let duration = 10;
-  let progressed = false;
 
-  $: if (currentTime >= duration && !progressed) {
-    progressed = true;
-    state.update((n) => n + 1);
+  $: if (currentTime >= duration) {
+    state.set(2);
   }
 </script>
 

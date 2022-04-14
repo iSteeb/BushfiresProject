@@ -1,7 +1,7 @@
 <script>
   import { scenario, state } from '../stores.js';
   $: if ($scenario.length > 3) {
-    state.update((n) => n + 1);
+    state.set(3);
   }
 </script>
 
