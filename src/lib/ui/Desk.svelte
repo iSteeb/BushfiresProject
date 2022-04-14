@@ -4,7 +4,7 @@
 </script>
 
 <div id="container" transition:fade={{ delay: 1000, duration: 1000 }}>
-  <img src="public/background.png" alt="bg" />
+  <img src="background.png" alt="bg" />
   <Alerts />
 </div>
 

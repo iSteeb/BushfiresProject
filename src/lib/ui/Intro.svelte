@@ -18,7 +18,7 @@
     autoplay
     muted
     bind:currentTime
-    src="public/animation.mp4"
+    src="animation.mp4"
     type="video/mp4" />
 </div>
 
