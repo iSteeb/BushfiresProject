@@ -3,10 +3,7 @@
   import { fade } from 'svelte/transition';
 </script>
 
-<div
-  id="container"
-  transition:fade={{ delay: 500, duration: 3000 }}
-  style="text-align:center">
+<div id="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <img src="desk.png" alt="bg" />
   <!-- TODO https://www.w3schools.com/html/html_images_imagemap.asp -->
   <Alerts />
