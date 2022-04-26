@@ -1,52 +1,46 @@
 <script>
-  import { state, scenario } from '../stores.js';
+  import { currentState, defaultState } from '../stores.js';
   import { clickOutside } from './click_outside.js';
-
-  let showInfoPanel = false;
-  let showMenu = true;
 </script>
 
 <div id="container">
-  {#if showMenu}
-    {#if $state == 0}
+  {#if $currentState.showMenu}
+    {#if $currentState.appState == 0}
       <button
         on:click={() => {
-          state.set(1);
-          showMenu = false;
-          showInfoPanel = false;
+          $currentState.appState = 1;
+          $currentState.showMenu = false;
+          $currentState.showInfoPanel = false;
         }}>Start</button>
     {:else}
       <button
         on:click={() => {
-          showMenu = false;
-          showInfoPanel = false;
+          $currentState.showMenu = false;
+          $currentState.showInfoPanel = false;
         }}>Resume</button>
       <button
         on:click={() => {
-          state.set(0);
-          showMenu = true;
-          showInfoPanel = false;
-          scenario.set([]);
+          currentState.set(defaultState);
         }}>Reset</button>
     {/if}
     <button
       on:click={() => {
-        showInfoPanel = !showInfoPanel;
+        $currentState.showInfoPanel = true;
       }}>Info</button>
   {:else}
     <button
       id="menuButton"
       on:click={() => {
-        showMenu = !showMenu;
-        showInfoPanel = false;
+        $currentState.showMenu = !$currentState.showMenu;
+        $currentState.showInfoPanel = false;
       }}>=</button>
   {/if}
 
-  {#if showInfoPanel}
+  {#if $currentState.showInfoPanel}
     <div
       id="infoButton"
       use:clickOutside
-      on:outclick={() => (showInfoPanel = false)}>
+      on:outclick={() => ($currentState.showInfoPanel = false)}>
       <h1>Info</h1>
       <p>
         This is a simple Svelte app.This is a simple Svelte app.This is a simple

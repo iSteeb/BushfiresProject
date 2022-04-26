@@ -1,16 +1,16 @@
 <script>
-  import { state } from '../stores.js';
+  import { currentState } from '../stores.js';
   import { fade } from 'svelte/transition';
 
   let currentTime = 0;
   export let duration = 10;
 
   $: if (currentTime >= duration) {
-    state.set(2);
+    $currentState.appState = 2;
   }
 </script>
 
-<div id="container" transition:fade={{ duration: 1000 }}>
+<div id="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <video
     id="bgvid"
     autoplay

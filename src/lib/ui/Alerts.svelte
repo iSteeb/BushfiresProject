@@ -1,18 +1,19 @@
 <script>
-  import { scenario, state } from '../stores.js';
-  $: if ($scenario.length > 3) {
-    state.set(3);
+  import { currentState } from '../stores.js';
+  $: if ($currentState.servedErrors.length > 3) {
+    $currentState.appState = 3;
   }
 </script>
 
+<!-- TODO - get the text to fly in then join the list https://svelte.dev/tutorial/deferred-transitions  -->
 <div id="container">
   <button
     on:click={() => {
-      $scenario = ['next', ...$scenario];
+      $currentState.servedErrors = ['next', ...$currentState.servedErrors];
     }}>Next</button>
 
-  {#each $scenario as alert}
-    <p>{alert}</p>
+  {#each $currentState.servedErrors as error}
+    <p>{error}</p>
   {/each}
 </div>
 
