@@ -13,8 +13,12 @@
 </script>
 
 <svelte:head>
-  <link rel="preload" href="background.png" as="image" />
-  <link rel="preload" href="animation.mp4" as="video" type="video/mp4" />
+  <link rel="preload" href="desk.png" as="image" />
+  <link rel="preload" href="introAssets/background.png" as="image" />
+  <link rel="preload" href="introAssets/midground.png" as="image" />
+  <link rel="preload" href="introAssets/foreground.png" as="image" />
+  <link rel="preload" href="introAssets/car.png" as="image" />
+  <link rel="preload" href="introAssets/sign.png" as="image" />
 </svelte:head>
 
 <Menu />
