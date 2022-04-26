@@ -21,7 +21,7 @@
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background: url('introAssets/car.png');
+    background: url('/introAssets/car.png');
     background-size: auto 100vh;
     background-position: 50%;
   }
@@ -30,7 +30,7 @@
     position: absolute;
     height: 100vh;
     width: 600vw;
-    background: url('introAssets/background.png') repeat-x;
+    background: url('/introAssets/background.png') repeat-x;
     animation: slide 30s linear infinite;
     background-size: auto 100vh;
   }
@@ -38,7 +38,7 @@
     position: absolute;
     height: 100vh;
     width: 600vw;
-    background: url('introAssets/midground.png') repeat-x;
+    background: url('/introAssets/midground.png') repeat-x;
     animation: slide 20s linear infinite;
     background-size: auto 100vh;
   }
@@ -47,7 +47,7 @@
     position: absolute;
     height: 100vh;
     width: 600vw;
-    background: url('introAssets/foreground.png') repeat-x;
+    background: url('/introAssets/foreground.png') repeat-x;
     animation: slide 7s linear infinite;
     background-size: auto 100vh;
   }
