@@ -7,7 +7,7 @@
   id="container"
   use:clickOutside
   on:outclick={() => ($currentState.showComponent = 0)}>
-  Laptop
+  Smartphone
 </div>
 
 <style>

@@ -1,8 +1,9 @@
 <script>
-  import { currentState, defaultState } from '../stores.js';
-  import { clickOutside } from './click_outside.js';
+  import { currentState, defaultState } from '../helpers/stores.js';
+  import { clickOutside } from '../helpers/click_outside.js';
 </script>
 
+<!-- TODO: Fix the floating menu that hides behind the damn SVG in desk -->
 <div id="container">
   {#if $currentState.showMenu}
     {#if $currentState.appState == 0}
@@ -42,12 +43,7 @@
       use:clickOutside
       on:outclick={() => ($currentState.showInfoPanel = false)}>
       <h1>Info</h1>
-      <p>
-        This is a simple Svelte app.This is a simple Svelte app.This is a simple
-        Svelte app.This is a simple Svelte app.This is a simple Svelte app.This
-        is a simple Svelte app.This is a simple Svelte app.This is a simple
-        Svelte app.
-      </p>
+      <p>v0.4 - yewwwww!</p>
     </div>
   {/if}
 </div>

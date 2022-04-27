@@ -5,6 +5,7 @@ export const currentState = writable({
   gameState: 0, // index of the current scenario
   showInfoPanel: false,
   showMenu: true,
+  showComponent: 0,
   servedAlerts: [], // array of alerts presented to the user
   servedErrors: [] // array of errors presented to the user
 });
@@ -14,6 +15,7 @@ export const defaultState = {
   gameState: 0,
   showInfoPanel: false,
   showMenu: true,
+  showComponent: 0,
   servedAlerts: [],
   servedErrors: []
 };

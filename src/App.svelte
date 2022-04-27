@@ -1,5 +1,5 @@
 <script>
-  import { currentState } from './lib/stores.js';
+  import { currentState } from './lib/helpers/stores.js';
   import Menu from './lib/ui/Menu.svelte';
   import Intro from './lib/ui/Intro.svelte';
   import Desk from './lib/ui/Desk.svelte';

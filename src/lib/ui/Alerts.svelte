@@ -1,5 +1,5 @@
 <script>
-  import { currentState } from '../stores.js';
+  import { currentState } from '../helpers/stores.js';
   $: if ($currentState.servedErrors.length > 3) {
     $currentState.appState = 3;
   }
