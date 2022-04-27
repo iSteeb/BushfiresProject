@@ -7,7 +7,6 @@
 </script>
 
 <!-- TODO: Show a countdown -->
-<!-- TODO: Remove sign until instructions out:clicked -->
 <div id="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <div id="slidingBackground" />
   <div id="slidingMidground" />
