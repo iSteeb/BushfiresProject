@@ -3,8 +3,7 @@
   import { clickOutside } from '../helpers/click_outside.js';
 </script>
 
-<!-- TODO: Fix the floating menu that hides behind the damn SVG in desk -->
-<div id="container">
+<div class="container">
   {#if $currentState.showMenu}
     {#if $currentState.appState == 0}
       <button
@@ -49,6 +48,20 @@
 </div>
 
 <style>
+  .container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  button {
+    z-index: 1000;
+  }
+
   #info {
     font-size: 50px;
     font-weight: bold;
@@ -63,15 +76,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  #container {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
+
   #menuButton {
     position: absolute;
     top: 0%;

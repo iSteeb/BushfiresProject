@@ -6,7 +6,7 @@
 </script>
 
 <!-- TODO: - get the text to fly in then join the list https://svelte.dev/tutorial/deferred-transitions  -->
-<div id="container">
+<div class="container">
   <button
     on:click={() => {
       $currentState.servedErrors = ['next', ...$currentState.servedErrors];
@@ -18,12 +18,15 @@
 </div>
 
 <style>
-  #container {
+  .container {
     position: absolute;
     width: 100vw;
     text-align: center;
     top: 90%;
     height: 10%;
     overflow: hidden;
+  }
+  button {
+    z-index: 1000;
   }
 </style>
