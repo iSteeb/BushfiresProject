@@ -4,7 +4,6 @@
 </script>
 
 <!-- TODO: Fix the floating menu that hides behind the damn SVG in desk -->
-<!-- TODO: Fix the mobile glitchy animation!!! -->
 <div id="container">
   {#if $currentState.showMenu}
     {#if $currentState.appState == 0}

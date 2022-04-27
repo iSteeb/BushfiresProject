@@ -6,11 +6,14 @@
   let showInstructions = true;
 </script>
 
-<!-- TODO: Instructions page/popup -->
-
+<!-- TODO: Show a countdown -->
+<!-- TODO: Remove sign until instructions out:clicked -->
 <div id="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <div id="slidingBackground" />
   <div id="slidingMidground" />
+  {#if !showInstructions}
+    <div id="sign" />
+  {/if}
   <div id="slidingForeground" />
   <div id="car" />
   {#if showInstructions}
@@ -21,7 +24,7 @@
         showInstructions = false;
         window.setTimeout(() => {
           $currentState.appState = 2;
-        }, 2500);
+        }, 3000);
       }}>
       info
     </div>
@@ -52,35 +55,53 @@
     background-position: 50%;
   }
 
+  #sign {
+    position: absolute;
+    height: 100vh;
+    width: calc(16 / 9 * 3 * 100vh);
+    background: url('/introAssets/sign.png') repeat-x;
+    background-size: auto 100vh;
+    animation: frameslide 15s linear infinite;
+  }
+
   #slidingBackground {
     position: absolute;
     height: 100vh;
-    width: 600vw;
-    background: url('/introAssets/background.png') repeat-x;
-    animation: slide 30s linear infinite;
+    width: calc(16 / 9 * 3 * 100vh);
+    background: url('/introAssets/background.png');
     background-size: auto 100vh;
+    animation: slide 30s linear infinite;
   }
+
   #slidingMidground {
     position: absolute;
     height: 100vh;
-    width: 600vw;
+    width: calc(16 / 9 * 3 * 100vh);
     background: url('/introAssets/midground.png') repeat-x;
-    animation: slide 20s linear infinite;
     background-size: auto 100vh;
+    animation: slide 20s linear infinite;
   }
 
   #slidingForeground {
     position: absolute;
     height: 100vh;
-    width: 600vw;
+    width: calc(16 / 9 * 3 * 100vh);
     background: url('/introAssets/foreground.png') repeat-x;
-    animation: slide 7s linear infinite;
     background-size: auto 100vh;
+    animation: slide 5s linear infinite;
   }
 
   @keyframes slide {
     0% {
-      transform: translate3d(-100vw, 0, 0);
+      transform: translate3d(calc(16 / 9 * -100vh), 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes frameslide {
+    0% {
+      transform: translate3d(calc(16 / 9 * 3 * -100vh), 0, 0);
     }
     100% {
       transform: translate3d(0, 0, 0);
