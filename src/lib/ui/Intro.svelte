@@ -9,6 +9,8 @@
   }, duration * 1000);
 </script>
 
+<!-- TODO: Instructions page/popup -->
+
 <div id="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <div id="slidingBackground" />
   <div id="slidingMidground" />

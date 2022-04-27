@@ -1,4 +1,4 @@
-// ! https://svelte.dev/tutorial/actions
+// REF: https://svelte.dev/tutorial/actions
 
 export function clickOutside(node) {
   const handleClick = (event) => {

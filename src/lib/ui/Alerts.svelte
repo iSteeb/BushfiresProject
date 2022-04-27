@@ -5,7 +5,7 @@
   }
 </script>
 
-<!-- TODO - get the text to fly in then join the list https://svelte.dev/tutorial/deferred-transitions  -->
+<!-- TODO: - get the text to fly in then join the list https://svelte.dev/tutorial/deferred-transitions  -->
 <div id="container">
   <button
     on:click={() => {
