@@ -1,12 +1,9 @@
 <script>
   import { currentState } from '../helpers/stores.js';
   import { fade } from 'svelte/transition';
+  import { clickOutside } from '../helpers/click_outside.js';
 
-  export let duration = 10;
-
-  window.setTimeout(() => {
-    $currentState.appState = 2;
-  }, duration * 1000);
+  let showInstructions = true;
 </script>
 
 <!-- TODO: Instructions page/popup -->
@@ -16,9 +13,36 @@
   <div id="slidingMidground" />
   <div id="slidingForeground" />
   <div id="car" />
+  {#if showInstructions}
+    <div
+      id="instructions"
+      use:clickOutside
+      on:outclick={() => {
+        showInstructions = false;
+        window.setTimeout(() => {
+          $currentState.appState = 2;
+        }, 2500);
+      }}>
+      info
+    </div>
+  {/if}
 </div>
 
 <style>
+  #instructions {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   #car {
     position: absolute;
     height: 100vh;

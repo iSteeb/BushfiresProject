@@ -22,7 +22,7 @@
 </svelte:head>
 
 <Menu />
-<svelte:component this={scene[$currentState.appState].component} duration={0} />
+<svelte:component this={scene[$currentState.appState].component} />
 
 <style>
 </style>

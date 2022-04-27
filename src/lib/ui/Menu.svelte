@@ -4,6 +4,7 @@
 </script>
 
 <!-- TODO: Fix the floating menu that hides behind the damn SVG in desk -->
+<!-- TODO: Fix the mobile glitchy animation!!! -->
 <div id="container">
   {#if $currentState.showMenu}
     {#if $currentState.appState == 0}
@@ -39,7 +40,7 @@
 
   {#if $currentState.showInfoPanel}
     <div
-      id="infoButton"
+      id="info"
       use:clickOutside
       on:outclick={() => ($currentState.showInfoPanel = false)}>
       <h1>Info</h1>
@@ -49,6 +50,20 @@
 </div>
 
 <style>
+  #info {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   #container {
     position: absolute;
     display: flex;
