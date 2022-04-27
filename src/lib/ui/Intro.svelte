@@ -60,7 +60,7 @@
     width: calc(16 / 9 * 3 * 100vh);
     background: url('/introAssets/sign.png') repeat-x;
     background-size: auto 100vh;
-    animation: frameslide 15s linear infinite;
+    animation: signslide 15s linear infinite;
   }
 
   #slidingBackground {
@@ -98,7 +98,7 @@
       transform: translate3d(0, 0, 0);
     }
   }
-  @keyframes frameslide {
+  @keyframes signslide {
     0% {
       transform: translate3d(calc(16 / 9 * 3 * -100vh), 0, 0);
     }
