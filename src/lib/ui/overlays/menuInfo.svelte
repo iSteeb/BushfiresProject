@@ -1,17 +1,10 @@
-<script>
-  import { clickOutside } from '../helpers/click_outside.js';
-  import { currentState } from '../helpers/stores.js';
-</script>
-
-<div
-  id="container"
-  use:clickOutside
-  on:outclick={() => ($currentState.showComponent = 0)}>
-  Laptop
+<div id="info">
+  <h1>Info</h1>
+  <p>v0.4 - yewwwww!</p>
 </div>
 
 <style>
-  #container {
+  #info {
     font-size: 50px;
     font-weight: bold;
     text-align: center;
@@ -24,5 +17,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1000;
   }
 </style>

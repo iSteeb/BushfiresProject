@@ -1,17 +1,10 @@
 <script>
-  import { clickOutside } from '../helpers/click_outside.js';
-  import { currentState } from '../helpers/stores.js';
 </script>
 
-<div
-  id="container"
-  use:clickOutside
-  on:outclick={() => ($currentState.showComponent = 0)}>
-  Landline
-</div>
+<div class="container">Radio</div>
 
 <style>
-  #container {
+  .container {
     font-size: 50px;
     font-weight: bold;
     text-align: center;

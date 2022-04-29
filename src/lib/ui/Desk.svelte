@@ -1,20 +1,13 @@
 <script>
-  import Alerts from './Alerts.svelte';
   import { fade } from 'svelte/transition';
   import { currentState } from '../helpers/stores.js';
-  import Laptop from '../components/Laptop.svelte';
-  import Radio from '../components/Radio.svelte';
-  import Smartphone from '../components/Smartphone.svelte';
-  import Landline from '../components/Landline.svelte';
-
-  const scene = [
-    { state: 0, component: false },
-    { state: 1, component: Laptop },
-    { state: 2, component: Radio },
-    { state: 3, component: Smartphone },
-    { state: 4, component: Landline }
-  ];
+  import Alerts from './Alerts.svelte';
 </script>
+
+<!-- TODO: https://svelte.dev/repl/591aff801e1d47498afdc2738fea4485?version=3.47.0
+     TODO: https://svelte.dev/examples/svg-transitions 
+     TODO: https://svelte.dev/examples/clock 
+     TODO: Animated clock with stopwatch timer for user time tracking and gamification pressure -->
 
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <div class="container" transition:fade={{ delay: 500, duration: 3000 }}>
@@ -32,7 +25,7 @@
       width="532"
       height="392"
       on:click={() => {
-        $currentState.showComponent = 1;
+        $currentState.overlayComponent = 1;
       }} />
     <rect
       x="1914"
@@ -42,7 +35,7 @@
       width="272"
       height="172"
       on:click={() => {
-        $currentState.showComponent = 2;
+        $currentState.overlayComponent = 2;
       }} />
     <rect
       x="1800"
@@ -52,7 +45,7 @@
       width="272"
       height="172"
       on:click={() => {
-        $currentState.showComponent = 3;
+        $currentState.overlayComponent = 3;
       }} />
     <rect
       x="600"
@@ -62,12 +55,11 @@
       width="272"
       height="172"
       on:click={() => {
-        $currentState.showComponent = 4;
+        $currentState.overlayComponent = 4;
       }} />
   </svg>
 </div>
 
-<svelte:component this={scene[$currentState.showComponent].component} />
 <Alerts />
 
 <style>

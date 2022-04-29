@@ -1,8 +1,8 @@
 <script>
   import { currentState, defaultState } from '../helpers/stores.js';
-  import { clickOutside } from '../helpers/click_outside.js';
 </script>
 
+<!-- TODO: Bug with menu, somehow made it so reset doesn't do anything?! Reproducible??? -->
 <div class="container">
   {#if $currentState.showMenu}
     {#if $currentState.appState == 0}
@@ -10,13 +10,11 @@
         on:click={() => {
           $currentState.appState = 1;
           $currentState.showMenu = false;
-          $currentState.showInfoPanel = false;
         }}>Start</button>
     {:else}
       <button
         on:click={() => {
           $currentState.showMenu = false;
-          $currentState.showInfoPanel = false;
         }}>Resume</button>
       <button
         on:click={() => {
@@ -25,25 +23,14 @@
     {/if}
     <button
       on:click={() => {
-        $currentState.showInfoPanel = true;
+        $currentState.overlayComponent = 99;
       }}>Info</button>
   {:else}
     <button
       id="menuButton"
       on:click={() => {
         $currentState.showMenu = !$currentState.showMenu;
-        $currentState.showInfoPanel = false;
       }}>=</button>
-  {/if}
-
-  {#if $currentState.showInfoPanel}
-    <div
-      id="info"
-      use:clickOutside
-      on:outclick={() => ($currentState.showInfoPanel = false)}>
-      <h1>Info</h1>
-      <p>v0.4 - yewwwww!</p>
-    </div>
   {/if}
 </div>
 
@@ -58,25 +45,6 @@
     height: 100vh;
   }
 
-  button {
-    z-index: 1000;
-  }
-
-  #info {
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    background: #000;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
   #menuButton {
     position: absolute;
     top: 0%;
@@ -85,17 +53,6 @@
     z-index: 999;
   }
 
-  #infoButton {
-    position: absolute;
-    background-color: grey;
-    border-width: 1px;
-    border: #ff3e00 solid;
-    width: 50vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-  }
   button {
     font-family: inherit;
     font-size: inherit;
@@ -108,6 +65,7 @@
     width: 200px;
     font-variant-numeric: tabular-nums;
     cursor: pointer;
+    z-index: 999;
   }
 
   button:focus {

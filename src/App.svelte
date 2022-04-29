@@ -4,12 +4,14 @@
   import Intro from './lib/ui/Intro.svelte';
   import Desk from './lib/ui/Desk.svelte';
   import EndScreen from './lib/ui/EndScreen.svelte';
-  const scene = [
-    { state: 0, component: false },
-    { state: 1, component: Intro },
-    { state: 2, component: Desk },
-    { state: 3, component: EndScreen }
-  ];
+  import Overlay from './lib/ui/Overlay.svelte';
+
+  const scene = {
+    0: false,
+    1: Intro,
+    2: Desk,
+    3: EndScreen
+  };
 </script>
 
 <svelte:head>
@@ -22,7 +24,12 @@
 </svelte:head>
 
 <Menu />
-<svelte:component this={scene[$currentState.appState].component} />
+<svelte:component this={scene[$currentState.appState]} />
+<Overlay />
+
+appState: {$currentState.appState}<br />
+gameState: {$currentState.gameState}<br />
+overlayComponent: {$currentState.overlayComponent}<br />
 
 <style>
 </style>

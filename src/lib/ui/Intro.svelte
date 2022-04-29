@@ -1,7 +1,7 @@
 <script>
   import { currentState } from '../helpers/stores.js';
   import { fade } from 'svelte/transition';
-  import { clickOutside } from '../helpers/click_outside.js';
+  import OutClick from 'svelte-outclick';
 
   let showInstructions = true;
 </script>
@@ -16,17 +16,16 @@
   <div id="slidingForeground" />
   <div id="car" />
   {#if showInstructions}
-    <div
-      id="instructions"
-      use:clickOutside
+    <OutClick
       on:outclick={() => {
         showInstructions = false;
         window.setTimeout(() => {
           $currentState.appState = 2;
         }, 3000);
       }}>
-      info
-    </div>
+      <div id="container">Landline</div>
+    </OutClick>
+    <div id="instructions">info</div>
   {/if}
 </div>
 

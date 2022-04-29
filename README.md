@@ -10,3 +10,6 @@ Bushfires Project
 
 literature review needs to better justify the design
 how to theoretically motivate people cognitive theory 3900 interaction design textbook chapter
+
+Repeating progress timer with new alerts every time?
+https://svelte.dev/repl/aa6c438ff6c04851b63328e3eb54466c?version=3.32.3
