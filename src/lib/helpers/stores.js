@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store';
 
+export const exclude = writable();
+
 export const currentState = writable({
   appState: 0, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
   gameState: 0, // index of the current scenario

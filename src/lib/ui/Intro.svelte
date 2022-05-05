@@ -1,5 +1,5 @@
 <script>
-  import { currentState } from '../helpers/stores.js';
+  import { currentState, exclude } from '../helpers/stores.js';
   import { fade } from 'svelte/transition';
   import OutClick from 'svelte-outclick';
 
@@ -22,10 +22,10 @@
         window.setTimeout(() => {
           $currentState.appState = 2;
         }, 3000);
-      }}>
-      <div id="container">Landline</div>
+      }}
+      excludeByDOMNode={[$exclude]}>
+      <div id="instructions">info</div>
     </OutClick>
-    <div id="instructions">info</div>
   {/if}
 </div>
 

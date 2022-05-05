@@ -23,13 +23,14 @@
   <link rel="preload" href="/introAssets/sign.png" as="image" />
 </svelte:head>
 
-<Menu />
 <svelte:component this={scene[$currentState.appState]} />
 <Overlay />
 
-appState: {$currentState.appState}<br />
-gameState: {$currentState.gameState}<br />
-overlayComponent: {$currentState.overlayComponent}<br />
+<div style="position: absolute">
+  appState: {$currentState.appState}<br />
+  gameState: {$currentState.gameState}<br />
+  overlayComponent: {$currentState.overlayComponent}<br />
+</div>
 
 <style>
 </style>
