@@ -66,24 +66,24 @@
 
     <!-- smartphone hitbox -->
     <rect
-      x="1800"
-      y="1800"
+      x="607"
+      y="1700"
       fill="#00f"
       opacity="0.2"
-      width="272"
-      height="172"
+      width="132"
+      height="228"
       on:click={() => {
         $currentState.overlayComponent = 3;
       }} />
 
     <!-- landline hitbox -->
     <rect
-      x="600"
-      y="1800"
+      x="1635"
+      y="1706"
       fill="#00f"
       opacity="0.2"
-      width="272"
-      height="172"
+      width="211"
+      height="222 "
       on:click={() => {
         $currentState.overlayComponent = 4;
       }} />

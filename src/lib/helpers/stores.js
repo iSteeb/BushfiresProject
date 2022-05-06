@@ -31,7 +31,8 @@ export const alerts = [
       text: 'text'
     },
     radio: 'script',
-    landline: 'similar but different script'
+    landline: 'similar but different script',
+    time: 'January 27, 2020 14:32:00'
   },
   {
     firesWebsite: 'second rich text',
@@ -41,6 +42,7 @@ export const alerts = [
       text: 'second text'
     },
     radio: 'second script',
-    landline: 'second similar but different script'
+    landline: 'second similar but different script',
+    time: 'January 27, 2020 16:33:00'
   }
 ];
