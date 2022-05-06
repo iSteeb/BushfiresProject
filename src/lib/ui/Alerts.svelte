@@ -7,11 +7,6 @@
 
 <!-- TODO: - get the text to fly in then join the list https://svelte.dev/tutorial/deferred-transitions  -->
 <div class="container">
-  <button
-    on:click={() => {
-      $currentState.servedErrors = ['next', ...$currentState.servedErrors];
-    }}>Next</button>
-
   {#each $currentState.servedErrors as error}
     <p>{error}</p>
   {/each}

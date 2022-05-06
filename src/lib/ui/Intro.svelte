@@ -6,7 +6,6 @@
   let showInstructions = true;
 </script>
 
-<!-- TODO: Show a countdown -->
 <div class="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <div id="slidingBackground" />
   <div id="slidingMidground" />

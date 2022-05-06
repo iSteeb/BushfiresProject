@@ -25,12 +25,6 @@
   });
 </script>
 
-<!-- TODO: https://svelte.dev/repl/591aff801e1d47498afdc2738fea4485?version=3.47.0
-     TODO: https://svelte.dev/examples/svg-transitions 
-     TODO: https://svelte.dev/examples/clock 
-     TODO: Animated clock with stopwatch timer for user time tracking and gamification pressure
-     TODO: 'realtime' forced progression with updates and a fast forward to next notificaiton button on clock -->
-
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <div class="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <svg
@@ -87,7 +81,18 @@
       on:click={() => {
         $currentState.overlayComponent = 4;
       }} />
-    <rect x="336" y="1125" fill="#00f" opacity="0.2" width="150" height="75" />
+
+    <!-- game state incrementer -->
+    <rect
+      x="336"
+      y="1125"
+      fill="#00f"
+      opacity="0.2"
+      width="150"
+      height="75"
+      on:click={() => {
+        $currentState.gameState += 1;
+      }} />
 
     <!-- animated clock -->
     <circle cx="408" cy="783" r="18px" fill="#79a8a1" />

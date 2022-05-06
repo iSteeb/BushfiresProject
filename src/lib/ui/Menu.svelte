@@ -2,7 +2,6 @@
   import { currentState, defaultState } from '../helpers/stores.js';
 </script>
 
-<!-- TODO: Bug with menu, somehow made it so reset doesn't do anything?! Reproducible??? -->
 <div class="container">
   {#if $currentState.showMenu}
     {#if $currentState.appState == 0}
