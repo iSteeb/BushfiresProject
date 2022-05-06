@@ -11,11 +11,11 @@
 
   onMount(() => {
     setInterval(() => {
-      time.setTime(time.getTime() + 60000);
+      time.setTime(time.getTime() + 10000);
       hours = time.getHours();
       minutes = time.getMinutes();
       seconds = time.getSeconds();
-    }, 100);
+    }, 1);
   });
 </script>
 
@@ -74,19 +74,20 @@
         $currentState.overlayComponent = 4;
       }} />
     <rect x="336" y="1049" fill="#00f" opacity="0.2" width="150" height="75" />
+    <circle cx="408" cy="867" r="0.75%" fill="#79a8a1" />
     <line
       x1="408"
       y1="867"
-      x2="700"
-      y2="700"
-      style="stroke:#666; stroke-width:2"
+      x2="408"
+      y2="600"
+      style="stroke:#79a8a1; stroke-width:12px"
       transform="rotate({6 * minutes + seconds / 10} 408 867)" />
     <line
       x1="408"
       y1="867"
-      x2="700"
-      y2="700"
-      style="stroke:#666; stroke-width:2"
+      x2="408"
+      y2="675"
+      style="stroke:#79a8a1; stroke-width:18px"
       transform="rotate({30 * hours + minutes / 2} 408 867)" />
   </svg>
 </div>
