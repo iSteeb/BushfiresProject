@@ -6,6 +6,7 @@
   let showInstructions = true;
 </script>
 
+<!-- TODO: Make the on outclick work on mobile and hide overflow to right on mobile -->
 <div class="container" transition:fade={{ delay: 500, duration: 3000 }}>
   <div id="slidingBackground" />
   <div id="slidingMidground" />

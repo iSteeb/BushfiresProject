@@ -31,15 +31,14 @@
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 2400 2400">
-    <image width="2400" height="2400" xlink:href="/desk.png" />
+    viewBox="0 0 2400 1800">
+    <image width="2400" height="1800" xlink:href="/desk.png" />
 
     <!-- laptop hitbox -->
     <rect
       x="982"
-      y="1534"
-      fill="#00f"
-      opacity="0.2"
+      y="1234"
+      opacity="0"
       width="532"
       height="395"
       on:click={() => {
@@ -49,9 +48,8 @@
     <!-- radio hitbox -->
     <rect
       x="1914"
-      y="854"
-      fill="#00f"
-      opacity="0.2"
+      y="554"
+      opacity="0"
       width="272"
       height="172"
       on:click={() => {
@@ -61,9 +59,8 @@
     <!-- smartphone hitbox -->
     <rect
       x="607"
-      y="1700"
-      fill="#00f"
-      opacity="0.2"
+      y="1400"
+      opacity="0"
       width="132"
       height="228"
       on:click={() => {
@@ -73,9 +70,8 @@
     <!-- landline hitbox -->
     <rect
       x="1635"
-      y="1706"
-      fill="#00f"
-      opacity="0.2"
+      y="1406"
+      opacity="0"
       width="211"
       height="222 "
       on:click={() => {
@@ -83,36 +79,34 @@
       }} />
 
     <!-- game state incrementer -->
-    <rect
-      x="336"
-      y="1125"
-      fill="#00f"
-      opacity="0.2"
-      width="150"
-      height="75"
+    <circle
+      cx="408"
+      cy="483"
+      r="316px"
+      opacity="0"
       on:click={() => {
         $currentState.gameState += 1;
       }} />
 
     <!-- animated clock -->
-    <circle cx="408" cy="783" r="18px" fill="#79a8a1" />
+    <circle cx="408" cy="483" r="18px" fill="#79a8a1" />
     <line
       x1="408"
-      y1="783"
+      y1="483"
       x2="408"
-      y2="525"
+      y2="225"
       style="stroke:#79a8a1; stroke-width:12px"
-      transform="rotate({6 * minutes + seconds / 10} 408 783)" />
+      transform="rotate({6 * minutes + seconds / 10} 408 483)" />
     <line
       x1="408"
-      y1="783"
+      y1="483"
       x2="408"
-      y2="600"
+      y2="300"
       style="stroke:#79a8a1; stroke-width:18px"
-      transform="rotate({30 * hours + minutes / 2} 408 783)" />
+      transform="rotate({30 * hours + minutes / 2} 408 483)" />
   </svg>
 </div>
-{diff}<Alerts />
+<Alerts />
 
 <style>
   svg {

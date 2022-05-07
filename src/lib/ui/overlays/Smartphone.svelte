@@ -1,21 +1,47 @@
 <script>
+  import { currentState } from '../../helpers/stores.js';
+  import SocialMediaApp from './applications/SocialMediaApp.svelte';
 </script>
 
-<div class="container">Smartphone</div>
+<div class="container">
+  <div class="viewport">
+    <SocialMediaApp />
+  </div>
+  <svg
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 1048 1816">
+    <image width="1048" height="1816" xlink:href="/smartphone.png" />
+  </svg>
+</div>
 
 <style>
+  .viewport {
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 3%;
+    padding: 1%;
+    height: 86.5%;
+    width: 91.5%;
+  }
   .container {
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    background: #000;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #000;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  @media (orientation: landscape) {
+    svg {
+      height: 70vh;
+      width: auto;
+    }
+  }
+
+  @media (orientation: portrait) {
+    svg {
+      width: 80vw;
+      height: auto;
+    }
   }
 </style>

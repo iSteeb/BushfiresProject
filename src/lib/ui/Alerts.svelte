@@ -21,7 +21,4 @@
     height: 10%;
     overflow: hidden;
   }
-  button {
-    z-index: 1000;
-  }
 </style>
