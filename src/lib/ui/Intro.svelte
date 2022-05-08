@@ -11,7 +11,7 @@
   };
 </script>
 
-<div class="container" transition:fade={{ delay: 500, duration: 3000 }}>
+<container transition:fade={{ delay: 500, duration: 3000 }}>
   <div id="slidingBackground" />
   <div id="slidingMidground" />
   {#if !showInstructions}
@@ -31,10 +31,10 @@
       <div id="instructions">info</div>
     </OutClick>
   {/if}
-</div>
+</container>
 
 <style>
-  .container {
+  container {
     z-index: -1;
   }
   #instructions {

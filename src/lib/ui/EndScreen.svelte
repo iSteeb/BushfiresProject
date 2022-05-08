@@ -2,12 +2,12 @@
   import { fade } from 'svelte/transition';
 </script>
 
-<div class="container" transition:fade={{ delay: 1000, duration: 1000 }}>
+<container transition:fade={{ delay: 1000, duration: 1000 }}>
   youve finished
-</div>
+</container>
 
 <style>
-  .container {
+  container {
     font-size: 50px;
     font-weight: bold;
     text-align: center;

@@ -3,7 +3,7 @@
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
 </script>
 
-<div class="container">
+<container>
   <div class="viewport">
     <SocialMediaApp />
   </div>
@@ -14,7 +14,7 @@
     viewBox="0 0 1048 1816">
     <image width="1048" height="1816" xlink:href="/smartphone.png" />
   </svg>
-</div>
+</container>
 
 <style>
   .viewport {
@@ -25,7 +25,7 @@
     height: 86.5%;
     width: 91.5%;
   }
-  .container {
+  container {
     position: absolute;
     top: 50%;
     left: 50%;

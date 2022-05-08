@@ -29,7 +29,7 @@
     }}
     bind:this={$exclude}>=</button>
 {:else}
-  <div class="container" bind:this={$exclude}>
+  <container bind:this={$exclude}>
     {#if $currentState.showMenu}
       {#if $currentState.appState == 0}
         <button
@@ -52,11 +52,11 @@
           $currentState.overlayComponent = 99;
         }}>Info</button>
     {/if}
-  </div>
+  </container>
 {/if}
 
 <style>
-  .container {
+  container {
     position: absolute;
     display: flex;
     flex-direction: column;

@@ -26,7 +26,7 @@
 </script>
 
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
-<div class="container" transition:fade={{ delay: 500, duration: 3000 }}>
+<container transition:fade={{ delay: 500, duration: 3000 }}>
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
       style="stroke:#79a8a1; stroke-width:18px"
       transform="rotate({30 * hours + minutes / 2} 408 483)" />
   </svg>
-</div>
+</container>
 <Alerts />
 
 <style>

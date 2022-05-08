@@ -3,7 +3,7 @@
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
 </script>
 
-<div class="container">
+<container>
   <div class="viewport">
     <SocialMediaApp />
   </div>
@@ -23,10 +23,10 @@
         $currentState.overlayComponent = 0;
       }} />
   </svg>
-</div>
+</container>
 
 <style>
-  .container {
+  container {
     position: absolute;
     top: 50%;
     left: 50%;

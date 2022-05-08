@@ -6,14 +6,14 @@
 </script>
 
 <!-- TODO: - get the text to fly in then join the list https://svelte.dev/tutorial/deferred-transitions  -->
-<div class="container">
+<container>
   {#each $currentState.servedErrors as error}
     <p>{error}</p>
   {/each}
-</div>
+</container>
 
 <style>
-  .container {
+  container {
     position: absolute;
     width: 100vw;
     text-align: center;

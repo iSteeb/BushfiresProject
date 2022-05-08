@@ -2,7 +2,7 @@
   import { currentState } from '../../helpers/stores.js';
 </script>
 
-<div class="container">
+<container>
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +10,7 @@
     viewBox="0 0 848 896">
     <image width="848" height="896" xlink:href="/landline.png" />
   </svg>
-</div>
+</container>
 
 <style>
   svg {
@@ -18,7 +18,7 @@
     max-width: 80vw;
     width: auto;
   }
-  .container {
+  container {
     position: absolute;
     top: 50%;
     left: 50%;

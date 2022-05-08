@@ -2,7 +2,7 @@
   import { currentState, defaultState } from '../helpers/stores.js';
 </script>
 
-<div class="container">
+<container>
   {#if $currentState.showMenu}
     {#if $currentState.appState == 0}
       <button
@@ -31,10 +31,10 @@
         $currentState.showMenu = !$currentState.showMenu;
       }}>=</button>
   {/if}
-</div>
+</container>
 
 <style>
-  .container {
+  container {
     position: absolute;
     display: flex;
     flex-direction: column;
