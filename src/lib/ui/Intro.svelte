@@ -1,7 +1,7 @@
 <script>
   import { currentState, exclude } from '../helpers/stores.js';
   import { fade } from 'svelte/transition';
-  import OutClick from 'svelte-outclick';
+  import OutClick from '../helpers/OutClick.svelte';
 
   let showInstructions = true;
 </script>

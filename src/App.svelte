@@ -4,7 +4,6 @@
   import Desk from './lib/ui/Desk.svelte';
   import EndScreen from './lib/ui/EndScreen.svelte';
   import Overlay from './lib/ui/Overlay.svelte';
-  import OutClick from 'svelte-outclick';
 
   const scene = {
     0: false,
@@ -24,12 +23,7 @@
 </svelte:head>
 
 <svelte:component this={scene[$currentState.appState]} />
-<OutClick
-  on:outclick={() => {
-    $currentState.appState = 1;
-  }}>
-  test
-</OutClick>
+
 <Overlay />
 <div style="position: absolute">
   appState: {$currentState.appState}<br />

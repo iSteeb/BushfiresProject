@@ -49,8 +49,12 @@
 
   @media (orientation: portrait) {
     svg {
-      width: 80vw;
-      height: auto;
+      height: 80vw;
+      width: auto;
     }
+  }
+  .container {
+    transform: rotate(90deg);
+    translate: -50% -50%;
   }
 </style>
