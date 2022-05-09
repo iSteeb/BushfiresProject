@@ -1,11 +1,11 @@
 <script>
   import OutClick from '../lib/OutClick.svelte';
-  import { currentState, defaultState, exclude } from '../helpers/stores.js';
+  import { currentState, defaultState, exclude } from '../lib/stores.js';
   import Laptop from './overlays/Laptop.svelte';
   import Radio from './overlays/Radio.svelte';
   import Smartphone from './overlays/Smartphone.svelte';
   import Landline from './overlays/Landline.svelte';
-  import menuInfo from './overlays/menuInfo.svelte';
+  import MenuInfo from './overlays/MenuInfo.svelte';
 
   const scene = {
     0: false,
@@ -13,7 +13,7 @@
     2: Radio,
     3: Smartphone,
     4: Landline,
-    99: menuInfo
+    99: MenuInfo
   };
 </script>
 

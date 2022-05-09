@@ -1,5 +1,5 @@
 <script>
-  import { currentState } from '../../helpers/stores.js';
+  import { currentState } from '../../lib/stores.js';
 </script>
 
 <container>

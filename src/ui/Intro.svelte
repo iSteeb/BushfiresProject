@@ -1,5 +1,5 @@
 <script>
-  import { currentState, exclude } from '../helpers/stores.js';
+  import { currentState, exclude } from '../lib/stores.js';
   import { fade } from 'svelte/transition';
   import OutClick from '../lib/OutClick.svelte';
 

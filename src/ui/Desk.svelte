@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { currentState } from '../helpers/stores.js';
+  import { currentState, alerts } from '../lib/stores.js';
   import Alerts from './Alerts.svelte';
   import { onMount } from 'svelte';
 
@@ -11,6 +11,10 @@
 
   let startTime = new Date();
   let diff;
+
+  $: $currentState.gameState > alerts.length
+    ? ($currentState.appState = 3)
+    : $currentState.gameState;
 
   onMount(() => {
     setInterval(() => {

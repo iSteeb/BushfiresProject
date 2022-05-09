@@ -11,19 +11,27 @@
     2: Desk,
     3: EndScreen
   };
+
+  const assets = [
+    '/desk.png',
+    '/introAssets/background.png',
+    '/introAssets/midground.png',
+    '/introAssets/foreground.png',
+    '/introAssets/car.png',
+    '/introAssets/sign.png'
+  ];
 </script>
 
 <svelte:head>
-  <link rel="preload" href="/desk.png" as="image" />
-  <link rel="preload" href="/introAssets/background.png" as="image" />
-  <link rel="preload" href="/introAssets/midground.png" as="image" />
-  <link rel="preload" href="/introAssets/foreground.png" as="image" />
-  <link rel="preload" href="/introAssets/car.png" as="image" />
-  <link rel="preload" href="/introAssets/sign.png" as="image" />
+  {#each assets as href}
+    <link rel="preload" {href} as="image" />
+  {/each}
 </svelte:head>
 
 <svelte:component this={scene[$currentState.appState]} />
-<info>info section</info>
+{#if $currentState.appState == 0}
+  <info>info section</info>
+{/if}
 <Overlay />
 
 <style>
