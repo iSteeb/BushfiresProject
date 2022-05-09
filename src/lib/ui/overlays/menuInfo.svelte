@@ -1,10 +1,10 @@
-<div id="info">
+<info>
   <h1>Info</h1>
   <p>v0.4 - yewwwww!</p>
-</div>
+</info>
 
 <style>
-  #info {
+  info {
     font-size: 50px;
     font-weight: bold;
     text-align: center;

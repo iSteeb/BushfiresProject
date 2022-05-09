@@ -23,13 +23,11 @@
 </svelte:head>
 
 <svelte:component this={scene[$currentState.appState]} />
-
+<info>info section</info>
 <Overlay />
-<div style="position: absolute">
-  appState: {$currentState.appState}<br />
-  gameState: {$currentState.gameState}<br />
-  overlayComponent: {$currentState.overlayComponent}<br />
-</div>
 
 <style>
+  info {
+    position: absolute;
+  }
 </style>

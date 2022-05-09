@@ -12,13 +12,13 @@
 </script>
 
 <container transition:fade={{ delay: 500, duration: 3000 }}>
-  <div id="slidingBackground" />
-  <div id="slidingMidground" />
+  <slidingBackground />
+  <slidingMidground />
   {#if !showInstructions}
-    <div id="sign" />
+    <sign />
   {/if}
-  <div id="slidingForeground" />
-  <div id="car" />
+  <slidingForeground />
+  <car />
   {#if showInstructions}
     <OutClick
       on:outclick={() => {
@@ -28,7 +28,7 @@
         }, 3000);
       }}
       excludeByDOMNode={[$exclude]}>
-      <div id="instructions">info</div>
+      <instructions>info</instructions>
     </OutClick>
   {/if}
 </container>
@@ -37,7 +37,7 @@
   container {
     z-index: -1;
   }
-  #instructions {
+  instructions {
     font-size: 50px;
     font-weight: bold;
     text-align: center;
@@ -51,7 +51,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  #car {
+  car {
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -60,7 +60,7 @@
     background-position: 50%;
   }
 
-  #sign {
+  sign {
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);
@@ -69,7 +69,7 @@
     animation: signslide 15s linear infinite;
   }
 
-  #slidingBackground {
+  slidingBackground {
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);
@@ -78,7 +78,7 @@
     animation: slide 30s linear infinite;
   }
 
-  #slidingMidground {
+  slidingMidground {
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);
@@ -87,7 +87,7 @@
     animation: slide 20s linear infinite;
   }
 
-  #slidingForeground {
+  slidingForeground {
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);

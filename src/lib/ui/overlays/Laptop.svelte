@@ -4,9 +4,9 @@
 </script>
 
 <container>
-  <div class="viewport">
+  <viewport>
     <SocialMediaApp />
-  </div>
+  </viewport>
 
   <svg
     version="1.1"
@@ -32,7 +32,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  .viewport {
+  viewport {
     position: absolute;
     margin-top: 11%;
     margin-left: 3%;

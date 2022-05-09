@@ -46,11 +46,11 @@
           on:click={() => {
             currentState.set(defaultState);
           }}>Reset</button>
+        <button
+          on:click={() => {
+            $currentState.overlayComponent = 99;
+          }}>Info</button>
       {/if}
-      <button
-        on:click={() => {
-          $currentState.overlayComponent = 99;
-        }}>Info</button>
     {/if}
   </container>
 {/if}
