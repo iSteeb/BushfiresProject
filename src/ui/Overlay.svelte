@@ -1,6 +1,6 @@
 <script>
-  import OutClick from '../OutClick.svelte';
-  import { currentState, defaultState, exclude } from '../stores.js';
+  import OutClick from '../lib/OutClick.svelte';
+  import { currentState, defaultState, exclude } from '../helpers/stores.js';
   import Laptop from './overlays/Laptop.svelte';
   import Radio from './overlays/Radio.svelte';
   import Smartphone from './overlays/Smartphone.svelte';

@@ -1,5 +1,5 @@
 <script>
-  import { currentState } from '../../stores.js';
+  import { currentState } from '../../helpers/stores.js';
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
 </script>
 

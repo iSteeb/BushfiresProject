@@ -1,9 +1,9 @@
 <script>
-  import { currentState } from './lib/helpers/stores.js';
-  import Intro from './lib/ui/Intro.svelte';
-  import Desk from './lib/ui/Desk.svelte';
-  import EndScreen from './lib/ui/EndScreen.svelte';
-  import Overlay from './lib/ui/Overlay.svelte';
+  import { currentState } from './lib/stores.js';
+  import Intro from './ui/Intro.svelte';
+  import Desk from './ui/Desk.svelte';
+  import EndScreen from './ui/EndScreen.svelte';
+  import Overlay from './ui/Overlay.svelte';
 
   const scene = {
     0: false,

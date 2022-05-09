@@ -1,5 +1,5 @@
 <script>
-  import { currentState } from '../../stores.js';
+  import { currentState } from '../../helpers/stores.js';
 </script>
 
 <container>
@@ -7,8 +7,8 @@
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 848 896">
-    <image width="848" height="896" xlink:href="/landline.png" />
+    viewBox="0 0 1092 692">
+    <image width="1092" height="692" xlink:href="/radio.png" />
   </svg>
 </container>
 

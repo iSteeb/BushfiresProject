@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { currentState } from '../stores.js';
+  import { currentState } from '../helpers/stores.js';
   import Alerts from './Alerts.svelte';
   import { onMount } from 'svelte';
 

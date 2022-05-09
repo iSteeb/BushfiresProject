@@ -1,3 +1,4 @@
+<!-- REF: https://github.com/babakfp/svelte-outclick -->
 <script>
   import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
