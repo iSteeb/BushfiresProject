@@ -1,7 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
   import { currentState, alerts, finalTime } from '../lib/stores.js';
-  import Alerts from './Alerts.svelte';
   import { onMount } from 'svelte';
   import Overlay from '../ui/Overlay.svelte';
 
@@ -118,7 +117,7 @@
       transform="rotate({30 * hours + minutes / 2} 408 483)" />
   </svg>
   <Overlay />
-  <Alerts />
+  <alerts> alerts here </alerts>
 </container>
 
 <style>
