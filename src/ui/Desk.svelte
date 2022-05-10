@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { currentState, alerts } from '../lib/stores.js';
+  import { currentState, alerts, finalTime } from '../lib/stores.js';
   import Alerts from './Alerts.svelte';
   import { onMount } from 'svelte';
 
@@ -12,9 +12,10 @@
   let startTime = new Date();
   let diff;
 
-  $: $currentState.gameState > alerts.length
-    ? ($currentState.appState = 3)
-    : $currentState.gameState;
+  $: if ($currentState.gameState > alerts.length) {
+    $finalTime = diff;
+    $currentState.appState = 3;
+  }
 
   onMount(() => {
     setInterval(() => {
@@ -30,13 +31,19 @@
 </script>
 
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
-<container transition:fade={{ delay: 500, duration: 3000 }}>
+<container in:fade={{ delay: 500, duration: 1500 }}>
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 2400 1800">
     <image width="2400" height="1800" xlink:href="/desk.png" />
+
+    {#if $currentState.gameState >= alerts.length}
+      <text x="408" y="850" text-anchor="middle">
+        Game Over - Click the Clock to Continue
+      </text>
+    {/if}
 
     <!-- laptop hitbox -->
     <rect

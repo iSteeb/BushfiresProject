@@ -11,7 +11,7 @@
   };
 </script>
 
-<container transition:fade={{ delay: 500, duration: 3000 }}>
+<container transition:fade={{ delay: 500, duration: 1500 }}>
   <slidingBackground />
   <slidingMidground />
   {#if !showInstructions}
@@ -66,7 +66,7 @@
     width: calc(16 / 9 * 3 * 100vh);
     background: url('/introAssets/sign.png') repeat-x;
     background-size: auto 100vh;
-    animation: signslide 15s linear infinite;
+    animation: signslide 30s linear infinite;
   }
 
   slidingBackground {
@@ -84,7 +84,7 @@
     width: calc(16 / 9 * 3 * 100vh);
     background: url('/introAssets/midground.png') repeat-x;
     background-size: auto 100vh;
-    animation: slide 20s linear infinite;
+    animation: slide 10s linear infinite;
   }
 
   slidingForeground {

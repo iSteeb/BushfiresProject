@@ -1,9 +1,10 @@
 <script>
   import { fade } from 'svelte/transition';
+  import { finalTime } from '../lib/stores.js';
 </script>
 
-<container transition:fade={{ delay: 1000, duration: 1000 }}>
-  youve finished
+<container in:fade={{ duration: 1000 }}>
+  final time: {$finalTime}
 </container>
 
 <style>
