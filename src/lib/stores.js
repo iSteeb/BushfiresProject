@@ -1,14 +1,18 @@
 import { writable } from 'svelte/store';
 
+export const speech = new SpeechSynthesisUtterance();
+speech.lang = 'en-AU';
+speech.rate = 0.85;
+
 export const exclude = writable();
 
 export const currentState = writable({
-  appState: 0, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
+  appState: 2, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
   gameState: 0, // index of the current scenario
   showMenu: true,
   overlayComponent: 0,
   servedAlerts: [], // array of alerts presented to the user
-  servedErrors: [] // array of errors presented to the user
+  nonfunctionalComponents: [] // array of broken components
 });
 
 export const defaultState = {
@@ -17,12 +21,10 @@ export const defaultState = {
   showMenu: true,
   overlayComponent: 0,
   servedAlerts: [],
-  servedErrors: []
+  nonfunctionalComponents: [] // array of broken components
 };
 
-export const finalTime = writable(0);
-
-export const errors = ['no landline', 'no internet', 'no radio', 'no signal'];
+export const finalTime = writable('00:00:00');
 
 export const alerts = [
   {

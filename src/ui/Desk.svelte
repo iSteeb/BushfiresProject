@@ -8,29 +8,45 @@
   let hours = time.getHours();
   let minutes = time.getMinutes();
   let seconds = time.getSeconds();
-
   let startTime = new Date();
-  let diff;
+  let speedFactor = 1;
+  let nextTime;
 
   $: if ($currentState.gameState > alerts.length) {
-    $finalTime = diff;
+    $finalTime = new Date(Date.now() - startTime.getTime())
+      .toISOString()
+      .slice(11, 19);
     $currentState.appState = 3;
+  }
+
+  $: if (time.getTime() > nextTime && $currentState.gameState < alerts.length) {
+    $currentState.gameState += 1;
+  }
+
+  $: if ($currentState.showMenu) {
+    speedFactor = 0;
+  } else if ($currentState.overlayComponent != 0) {
+    speedFactor = 100;
+  } else {
+    speedFactor = 450;
   }
 
   onMount(() => {
     setInterval(() => {
-      time.setTime(time.getTime() + 10000);
+      time = new Date(time.getTime() + speedFactor);
       hours = time.getHours();
       minutes = time.getMinutes();
       seconds = time.getSeconds();
-      diff = new Date(Date.now() - startTime.getTime())
-        .toISOString()
-        .slice(11, 19);
-    }, 1);
+      if ($currentState.gameState < alerts.length) {
+        nextTime = Date.parse(alerts[$currentState.gameState].time);
+      }
+    }, 10);
   });
 </script>
 
+<!-- TODO: Stop other clicks working whilst paused! -->
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
+{$currentState.gameState}
 <container in:fade={{ delay: 500, duration: 1500 }}>
   <svg
     version="1.1"
@@ -97,6 +113,7 @@
       opacity="0"
       on:click={() => {
         $currentState.gameState += 1;
+        time.setTime(Date.parse(alerts[$currentState.gameState - 1].time));
       }} />
 
     <!-- animated clock -->
@@ -117,7 +134,7 @@
       transform="rotate({30 * hours + minutes / 2} 408 483)" />
   </svg>
   <Overlay />
-  <alerts> alerts here </alerts>
+  <alerts>alerts</alerts>
 </container>
 
 <style>

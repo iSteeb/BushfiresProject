@@ -1,16 +1,27 @@
 <script>
-  import { currentState, alerts } from '../../lib/stores.js';
-  let speech = new SpeechSynthesisUtterance();
+  import { currentState, alerts, speech } from '../../lib/stores.js';
+  import { onMount } from 'svelte';
 
-  speech.lang = 'en-AU';
-  speech.rate = 0.75;
+  $: functional = $currentState.nonfunctionalComponents.includes(4);
 
   function playAlert() {
     speech.text = alerts[$currentState.gameState].landline;
     // TODO: paused = resume or restart, depending on state
     window.speechSynthesis.speak(speech);
   }
+
+  function updateTick() {
+    $currentState = $currentState;
+  }
+
+  onMount(() => {
+    setInterval(() => {
+      updateTick();
+    }, 100);
+  });
 </script>
+
+{functional}
 
 <container>
   <svg
