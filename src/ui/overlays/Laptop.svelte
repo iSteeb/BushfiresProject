@@ -34,11 +34,11 @@
   }
   viewport {
     position: absolute;
-    margin-top: 11%;
-    margin-left: 3%;
-    padding: 1%;
-    height: 77.5%;
-    width: 91.5%;
+    margin-top: 10.75%;
+    margin-left: 2.65%;
+    height: 81.35%;
+    width: 94.55%;
+    border-radius: 20px;
   }
   @media (orientation: landscape) {
     svg {

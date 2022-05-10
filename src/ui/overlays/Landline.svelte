@@ -1,27 +1,40 @@
 <script>
-  import { currentState, alerts, speech } from '../../lib/stores.js';
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
+  import { currentState, alerts } from '../../lib/stores.js';
 
-  $: functional = $currentState.nonfunctionalComponents.includes(4);
+  let speech = new SpeechSynthesisUtterance();
+  speech.lang = 'en-AU';
+  speech.rate = 0.85;
 
-  function playAlert() {
-    speech.text = alerts[$currentState.gameState].landline;
-    // TODO: paused = resume or restart, depending on state
-    window.speechSynthesis.speak(speech);
+  let playbackEnabled = !$currentState.nonfunctionalComponents.includes(4);
+  let toneAudio = new Audio('/tone.mp3');
+  toneAudio.loop = true;
+  toneAudio.volume = 0.25;
+
+  function toggleAlert() {
+    if (playbackEnabled) {
+      speech.text = alerts[$currentState.gameState].landline;
+
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      } else {
+        window.speechSynthesis.speak(speech);
+      }
+    } else {
+      if (toneAudio.paused) {
+        toneAudio.play();
+      } else {
+        toneAudio.pause();
+        toneAudio.currentTime = 0;
+      }
+    }
   }
-
-  function updateTick() {
-    $currentState = $currentState;
-  }
-
-  onMount(() => {
-    setInterval(() => {
-      updateTick();
-    }, 100);
+  onDestroy(() => {
+    toneAudio.pause();
+    toneAudio.currentTime = 0;
+    window.speechSynthesis.cancel();
   });
 </script>
-
-{functional}
 
 <container>
   <svg
@@ -36,7 +49,7 @@
       r="50"
       fill="#222"
       on:click={() => {
-        playAlert();
+        toggleAlert();
       }} />
   </svg>
 </container>

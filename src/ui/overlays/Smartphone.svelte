@@ -19,11 +19,11 @@
 <style>
   viewport {
     position: absolute;
-    margin-top: 10%;
-    margin-left: 3%;
-    padding: 1%;
-    height: 86.5%;
-    width: 91.5%;
+    margin-top: 9.5%;
+    margin-left: 2.5%;
+    height: 88.6%;
+    width: 95%;
+    border-radius: 20px;
   }
   container {
     position: absolute;

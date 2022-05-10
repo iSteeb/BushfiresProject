@@ -1,44 +1,44 @@
 <script>
-  import { currentState, alerts } from '../../lib/stores.js';
-  let speech = new SpeechSynthesisUtterance();
+  import { onDestroy } from 'svelte';
 
+  import { currentState, alerts } from '../../lib/stores.js';
+
+  let speech = new SpeechSynthesisUtterance();
   speech.lang = 'en-AU';
   speech.rate = 0.85;
 
-  let state = 0; // 0 = stopped, 1 = playing, 2 = paused
+  let playbackEnabled = !$currentState.nonfunctionalComponents.includes(2);
+  let staticAudio = new Audio('/static.wav');
+  staticAudio.loop = true;
+  staticAudio.volume = 0.25;
 
-  // paused, pending, speaking
-  function playPauseAlert() {
-    if (state != 1) {
-      window.speechSynthesis.pause();
-      state = 2;
-    }
-    speech.text = alerts[$currentState.gameState].landline;
-    state = 1;
-    window.speechSynthesis.speak(speech);
-    if (state == 1) {
-      window.speechSynthesis.pause();
-      state = 2;
+  function toggleAlert() {
+    if (playbackEnabled) {
+      speech.text = alerts[$currentState.gameState].radio;
+
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      } else {
+        window.speechSynthesis.speak(speech);
+      }
+    } else {
+      if (staticAudio.paused) {
+        staticAudio.play();
+      } else {
+        staticAudio.pause();
+        staticAudio.currentTime = 0;
+      }
     }
   }
 
-  function pauseAlert() {
-    if (state == 1) {
-      window.speechSynthesis.pause();
-      state = 2;
-    }
-  }
-
-  function cancelAlert() {
-    if (state != 0) {
-      window.speechSynthesis.cancel();
-      state = 0;
-    }
-  }
+  onDestroy(() => {
+    staticAudio.pause();
+    staticAudio.currentTime = 0;
+    window.speechSynthesis.cancel();
+  });
 </script>
 
 <container>
-  {window.speechSynthesis.speaking}
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@
       r="50"
       fill="#222"
       on:click={() => {
-        playPauseAlert();
+        toggleAlert();
       }} />
   </svg>
 </container>

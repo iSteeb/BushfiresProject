@@ -26,7 +26,7 @@
   $: if ($currentState.showMenu) {
     speedFactor = 0;
   } else if ($currentState.overlayComponent != 0) {
-    speedFactor = 100;
+    speedFactor = 0;
   } else {
     speedFactor = 450;
   }

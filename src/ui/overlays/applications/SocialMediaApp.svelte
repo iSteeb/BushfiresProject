@@ -8,10 +8,11 @@
   container {
     display: flex;
     flex-flow: row wrap;
-    background-color: lightblue;
-    opacity: 0.15;
+    opacity: 0.5;
     height: 100%;
     width: 100%;
+    background-color: lightblue;
+    border-radius: inherit;
   }
   div {
     height: 5vh;
