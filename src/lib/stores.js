@@ -11,15 +11,6 @@ export const currentState = writable({
   servedErrors: [] // array of errors presented to the user
 });
 
-export const defaultState = {
-  appState: 0,
-  gameState: 0,
-  showMenu: true,
-  overlayComponent: 0,
-  servedAlerts: [],
-  servedErrors: []
-};
-
 export const finalTime = writable(0);
 
 export const errors = ['no landline', 'no internet', 'no radio', 'no signal'];
