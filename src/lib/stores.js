@@ -26,6 +26,7 @@ export const defaultState = {
 
 export const finalTime = writable('00:00:00');
 
+// REF: https://esa.act.gov.au/emergency-warning-orroral-valley-fire
 export const alerts = [
   {
     firesWebsite: 'rich text',

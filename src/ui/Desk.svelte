@@ -46,7 +46,6 @@
 
 <!-- TODO: Stop other clicks working whilst paused! -->
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
-{$currentState.gameState}
 <container in:fade={{ delay: 500, duration: 1500 }}>
   <svg
     version="1.1"
