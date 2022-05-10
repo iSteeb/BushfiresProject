@@ -5,7 +5,7 @@
   import Radio from './overlays/Radio.svelte';
   import Smartphone from './overlays/Smartphone.svelte';
   import Landline from './overlays/Landline.svelte';
-  import MenuInfo from './overlays/MenuInfo.svelte';
+  import MenuInfo from 'svelte-outclick';
 
   const scene = {
     0: false,
