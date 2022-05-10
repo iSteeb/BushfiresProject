@@ -1,15 +1,15 @@
 <script>
-  import { currentState } from './lib/stores.js';
+  import { currentState, defaultState } from './lib/stores.js';
   import Intro from './ui/Intro.svelte';
   import Desk from './ui/Desk.svelte';
-  import EndScreen from './ui/EndScreen.svelte';
   import { fade } from 'svelte/transition';
+  import { finalTime } from './lib/stores.js';
 
   const scene = {
     0: false,
     1: Intro,
     2: Desk,
-    3: EndScreen
+    3: false
   };
 
   const assets = [
@@ -31,24 +31,45 @@
 <container transition:fade={{ duration: 500 }}>
   <svelte:component this={scene[$currentState.appState]} />
   {#if $currentState.appState == 0}
+    <button
+      class="startButton"
+      on:click={() => {
+        $currentState.appState = 1;
+        $currentState.showMenu = false;
+      }}>New Simulation</button>
     <info>info section</info>
+  {/if}
+  {#if $currentState.appState == 3}
+    <end in:fade={{ duration: 1000 }}>
+      final time: {$finalTime}
+    </end>
+    <button
+      class="startButton"
+      on:click={() => {
+        $currentState = Object.assign({}, defaultState);
+      }}>Reset</button>
   {/if}
 </container>
 
-{#if $currentState.appState == 0}
-  <button
-    id="startButton"
-    on:click={() => {
-      $currentState.appState = 1;
-      $currentState.showMenu = false;
-    }}>Start</button>
-{/if}
-
 <style>
+  end {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   info {
     position: absolute;
   }
-  #startButton {
+  .startButton {
     position: absolute;
     width: 10vw;
     height: 10vh;

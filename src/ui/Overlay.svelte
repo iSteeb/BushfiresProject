@@ -1,21 +1,12 @@
 <script>
   import OutClick from 'svelte-outclick';
-  import { currentState, exclude } from '../lib/stores.js';
+  import { currentState, defaultState, exclude } from '../lib/stores.js';
   import Laptop from './overlays/Laptop.svelte';
   import Radio from './overlays/Radio.svelte';
   import Smartphone from './overlays/Smartphone.svelte';
   import Landline from './overlays/Landline.svelte';
   import MenuInfo from './overlays/MenuInfo.svelte';
   import { fade } from 'svelte/transition';
-
-  const defaultState = {
-    appState: 0,
-    gameState: 0,
-    showMenu: true,
-    overlayComponent: 0,
-    servedAlerts: [],
-    servedErrors: []
-  };
 
   const scene = {
     0: false,
@@ -57,7 +48,7 @@
       </g>
       <g
         on:click={() => {
-          $currentState = defaultState;
+          $currentState = Object.assign({}, defaultState);
         }}>
         <path
           fill="#424242"
