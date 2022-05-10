@@ -3,6 +3,7 @@
   import { currentState, alerts, finalTime } from '../lib/stores.js';
   import Alerts from './Alerts.svelte';
   import { onMount } from 'svelte';
+  import Overlay from '../ui/Overlay.svelte';
 
   let time = new Date('January 27, 2020 14:00:00');
   let hours = time.getHours();
@@ -116,8 +117,9 @@
       style="stroke:#79a8a1; stroke-width:18px"
       transform="rotate({30 * hours + minutes / 2} 408 483)" />
   </svg>
+  <Overlay />
+  <Alerts />
 </container>
-<Alerts />
 
 <style>
   svg {
