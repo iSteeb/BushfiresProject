@@ -4,6 +4,7 @@
   import Desk from './ui/Desk.svelte';
   import EndScreen from './ui/EndScreen.svelte';
   import Overlay from './ui/Overlay.svelte';
+  import { fade } from 'svelte/transition';
 
   const scene = {
     0: false,
@@ -27,12 +28,13 @@
     <link rel="preload" {href} as="image" />
   {/each}
 </svelte:head>
-
-<svelte:component this={scene[$currentState.appState]} />
-{#if $currentState.appState == 0}
-  <info>info section</info>
-{/if}
-<Overlay />
+<container transition:fade={{ duration: 500 }}>
+  <svelte:component this={scene[$currentState.appState]} />
+  {#if $currentState.appState == 0}
+    <info>info section</info>
+  {/if}
+  <Overlay />
+</container>
 
 <style>
   info {
