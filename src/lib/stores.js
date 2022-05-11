@@ -7,12 +7,12 @@ speech.rate = 0.85;
 export const exclude = writable();
 
 export const currentState = writable({
-  appState: 2, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
+  appState: 0, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
   gameState: 0, // index of the current scenario
   showMenu: true,
   overlayComponent: 0,
   servedAlerts: [], // array of alerts presented to the user
-  nonfunctionalComponents: [2, 4] // array of broken components
+  nonfunctionalComponents: [2] // array of broken components
 });
 
 export const defaultState = {
