@@ -28,7 +28,7 @@
   } else if ($currentState.overlayComponent != 0) {
     speedFactor = 0;
   } else {
-    speedFactor = 450;
+    speedFactor = 11250;
   }
 
   onMount(() => {
@@ -40,7 +40,7 @@
       if ($currentState.gameState < alerts.length) {
         nextTime = Date.parse(alerts[$currentState.gameState].time);
       }
-    }, 10);
+    }, 250);
   });
 </script>
 
