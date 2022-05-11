@@ -18,13 +18,19 @@
     'BushfiresProject/introAssets/midground.png',
     'BushfiresProject/introAssets/foreground.png',
     'BushfiresProject/introAssets/car.png',
-    'BushfiresProject/introAssets/sign.png'
+    'BushfiresProject/introAssets/sign.png',
+    'BushfiresProject/landline.png',
+    'BushfiresProject/smartphone.png',
+    'BushfiresProject/radio.png',
+    'BushfiresProject/laptop.png',
+    'BushfiresProject/static.wav',
+    'BushfiresProject/tone.mp3'
   ];
 </script>
 
 <svelte:head>
   {#each assets as href}
-    <link rel="preload" {href} as="image" />
+    <link rel="preload" {href} />
   {/each}
 </svelte:head>
 
