@@ -52,7 +52,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 2400 1800">
-    <image width="2400" height="1800" xlink:href="/desk.png" />
+    <image width="2400" height="1800" xlink:href="BushfiresProject/desk.png" />
 
     {#if $currentState.gameState >= alerts.length}
       <text x="408" y="850" text-anchor="middle">

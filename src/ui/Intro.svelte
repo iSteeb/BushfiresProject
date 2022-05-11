@@ -56,7 +56,7 @@
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background: url('/introAssets/car.png');
+    background: url('/BushfiresProject/introAssets/car.png');
     background-size: auto 100vh;
     background-position: 50%;
   }
@@ -65,7 +65,7 @@
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);
-    background: url('/introAssets/sign.png') repeat-x;
+    background: url('/BushfiresProject/introAssets/sign.png') repeat-x;
     background-size: auto 100vh;
     animation: signslide 30s linear infinite;
   }
@@ -74,7 +74,7 @@
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);
-    background: url('/introAssets/background.png');
+    background: url('/BushfiresProject/introAssets/background.png');
     background-size: auto 100vh;
     animation: slide 30s linear infinite;
   }
@@ -83,7 +83,7 @@
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);
-    background: url('/introAssets/midground.png') repeat-x;
+    background: url('/BushfiresProject/introAssets/midground.png') repeat-x;
     background-size: auto 100vh;
     animation: slide 10s linear infinite;
   }
@@ -92,7 +92,7 @@
     position: absolute;
     height: 100vh;
     width: calc(16 / 9 * 3 * 100vh);
-    background: url('/introAssets/foreground.png') repeat-x;
+    background: url('/BushfiresProject/introAssets/foreground.png') repeat-x;
     background-size: auto 100vh;
     animation: slide 5s linear infinite;
   }

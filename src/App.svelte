@@ -13,12 +13,12 @@
   };
 
   const assets = [
-    '/desk.png',
-    '/introAssets/background.png',
-    '/introAssets/midground.png',
-    '/introAssets/foreground.png',
-    '/introAssets/car.png',
-    '/introAssets/sign.png'
+    'BushfiresProject/desk.png',
+    'BushfiresProject/introAssets/background.png',
+    'BushfiresProject/introAssets/midground.png',
+    'BushfiresProject/introAssets/foreground.png',
+    'BushfiresProject/introAssets/car.png',
+    'BushfiresProject/introAssets/sign.png'
   ];
 </script>
 

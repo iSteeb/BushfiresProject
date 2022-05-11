@@ -12,7 +12,7 @@ export const currentState = writable({
   showMenu: true,
   overlayComponent: 0,
   servedAlerts: [], // array of alerts presented to the user
-  nonfunctionalComponents: [] // array of broken components
+  nonfunctionalComponents: [2, 4] // array of broken components
 });
 
 export const defaultState = {

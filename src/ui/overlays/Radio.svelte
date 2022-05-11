@@ -8,7 +8,7 @@
   speech.rate = 0.85;
 
   let playbackEnabled = !$currentState.nonfunctionalComponents.includes(2);
-  let staticAudio = new Audio('/static.wav');
+  let staticAudio = new Audio('BushfiresProject/static.wav');
   staticAudio.loop = true;
   staticAudio.volume = 0.25;
 
@@ -44,7 +44,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 1092 692">
-    <image width="1092" height="692" xlink:href="/radio.png" />
+    <image width="1092" height="692" xlink:href="BushfiresProject/radio.png" />
     <circle
       cx="448"
       cy="448"

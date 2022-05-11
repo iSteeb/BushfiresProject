@@ -13,7 +13,10 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 2428 1793">
-    <image width="2428" height="1793" xlink:href="/laptop.png" />
+    <image
+      width="2428"
+      height="1793"
+      xlink:href="BushfiresProject/laptop.png" />
     <circle
       r="44"
       cx="138"

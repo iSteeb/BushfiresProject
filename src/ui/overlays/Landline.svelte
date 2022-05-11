@@ -7,7 +7,7 @@
   speech.rate = 0.85;
 
   let playbackEnabled = !$currentState.nonfunctionalComponents.includes(4);
-  let toneAudio = new Audio('/tone.mp3');
+  let toneAudio = new Audio('BushfiresProject/tone.mp3');
   toneAudio.loop = true;
   toneAudio.volume = 0.25;
 
@@ -42,7 +42,10 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 848 896">
-    <image width="848" height="896" xlink:href="/landline.png" />
+    <image
+      width="848"
+      height="896"
+      xlink:href="BushfiresProject/landline.png" />
     <circle
       cx="448"
       cy="448"

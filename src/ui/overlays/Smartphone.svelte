@@ -12,7 +12,10 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 1048 1816">
-    <image width="1048" height="1816" xlink:href="/smartphone.png" />
+    <image
+      width="1048"
+      height="1816"
+      xlink:href="BushfiresProject/smartphone.png" />
   </svg>
 </container>
 
