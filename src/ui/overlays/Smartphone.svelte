@@ -17,6 +17,9 @@
 </script>
 
 <container>
+  <signal>
+    {#if $currentState.nonfunctionalComponents.includes(3)}NO{:else}FULL{/if} SIGNAL
+  </signal>
   <viewport>
     {#if smartphoneState == 0}
       <button
@@ -36,16 +39,7 @@
           smartphoneState = 1;
         }}>PhoneApp</button>
     {/if}
-
-    {#if !$currentState.nonfunctionalComponents.includes(3)}
-      <!-- TODO: full signal div -->
-      <svelte:component this={scene[smartphoneState]} />
-    {:else}
-      <!-- TODO: No signal div -->
-      {#if smartphoneState != 0}
-        empty content div
-      {/if}
-    {/if}
+    <svelte:component this={scene[smartphoneState]} />
   </viewport>
   <svg
     version="1.1"
@@ -70,11 +64,27 @@
 <style>
   viewport {
     position: absolute;
-    margin-top: 9.5%;
+    margin-top: 16.2%;
     margin-left: 2.5%;
-    height: 85.7%;
+    height: 81.9%;
     width: 95%;
-    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  signal {
+    position: absolute;
+    padding-top: 2%;
+    padding-right: 5%;
+    margin-top: 9.2%;
+    margin-left: 2.5%;
+    height: 3%;
+    width: 90%;
+    background: #424242;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: right;
+    color: white;
+    font-size: 75%;
   }
   container {
     position: absolute;

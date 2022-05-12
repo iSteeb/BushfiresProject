@@ -28,6 +28,7 @@
         }, 3000);
       }}>
       <!-- TODO: prompt the user to think of the route in intro info -->
+      <!-- TODO: also inform users that stuff may break (phones etc) as the fire gets worse, but may also come back online as it gets better -->
 
       <instructions>info</instructions>
     </OutClick>

@@ -5,7 +5,6 @@
 
   let speech = new SpeechSynthesisUtterance();
   speech.lang = 'en-AU';
-  speech.rate = 0.85;
 
   let playbackEnabled = !$currentState.nonfunctionalComponents.includes(2);
   let staticAudio = new Audio('BushfiresProject/static.wav');
@@ -14,7 +13,14 @@
 
   function toggleAlert() {
     if (playbackEnabled) {
-      speech.text = alerts[$currentState.gameState].radio;
+      speech.text =
+        'You are listening to your local news radio station bringing you the latest update on the bushfire. The fire is currently classed at the ' +
+        alerts[$currentState.gameState].level +
+        ' level. ' +
+        alerts[$currentState.gameState].threat +
+        ' ' +
+        alerts[$currentState.gameState].shortText +
+        " You can also check out the latest news on the bushfire on your local fire agency's website.";
 
       if (window.speechSynthesis.speaking) {
         window.speechSynthesis.cancel();

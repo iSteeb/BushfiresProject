@@ -4,6 +4,9 @@
   <div />
 </container>
 
+<!-- TODO: THIS -->
+
+<!-- Responsive (phone and web) -->
 <style>
   container {
     display: flex;

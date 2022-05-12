@@ -28,7 +28,7 @@
   } else if ($currentState.overlayComponent != 0) {
     speedFactor = 0;
   } else {
-    speedFactor = 45000;
+    speedFactor = 11250;
   }
 
   onMount(() => {
@@ -40,7 +40,7 @@
       if ($currentState.gameState < alerts.length) {
         nextTime = Date.parse(alerts[$currentState.gameState].time);
       }
-    }, 1000);
+    }, 250);
   });
 </script>
 
@@ -148,7 +148,6 @@
       transform="rotate({30 * hours + minutes / 2} 408 483)" />
   </svg>
   <Overlay />
-  <alerts>alerts</alerts>
 </container>
 
 <style>
