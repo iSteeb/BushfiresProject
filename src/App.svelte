@@ -4,6 +4,7 @@
   import Desk from './ui/Desk.svelte';
   import { fade } from 'svelte/transition';
   import { finalTime } from './lib/stores.js';
+  import OutClick from 'svelte-outclick';
 
   const scene = {
     0: false,
@@ -34,9 +35,11 @@
   {/each}
 </svelte:head>
 
-<container transition:fade={{ duration: 500 }}>
-  <svelte:component this={scene[$currentState.appState]} />
-  {#if $currentState.appState == 0}
+<svelte:component this={scene[$currentState.appState]} />
+{#if $currentState.appState == 0}
+  <container
+    in:fade={{ delay: 500, duration: 1500 }}
+    out:fade={{ duration: 250 }}>
     <button
       class="startButton"
       on:click={() => {
@@ -44,18 +47,20 @@
         $currentState.showMenu = false;
       }}>New Simulation</button>
     <info>info section</info>
-  {/if}
-  {#if $currentState.appState == 3}
-    <end in:fade={{ duration: 1000 }}>
-      final time: {$finalTime}
-    </end>
-    <button
-      class="startButton"
-      on:click={() => {
+  </container>
+{/if}
+{#if $currentState.appState == 3}
+  <container in:fade={{ duration: 1500 }} out:fade={{ duration: 250 }}>
+    <OutClick
+      on:outclick={() => {
         $currentState = Object.assign({}, defaultState);
-      }}>Reset</button>
-  {/if}
-</container>
+      }}>
+      <end>
+        final time: {$finalTime} click outside to reset
+      </end>
+    </OutClick>
+  </container>
+{/if}
 
 <style>
   end {

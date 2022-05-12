@@ -49,7 +49,9 @@
 
 <!-- TODO: if alert is extreme, high chance of roadblockage occurring | if road blocked and alert drops to advice, road is unblocked | prompt users to think about if they are prepared -->
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
-<container in:fade={{ delay: 500, duration: 1500 }}>
+<container
+  in:fade={{ delay: 500, duration: 1500 }}
+  out:fade={{ duration: 250 }}>
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"

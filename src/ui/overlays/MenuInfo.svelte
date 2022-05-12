@@ -1,4 +1,8 @@
-<info>
+<script>
+  import { fly } from 'svelte/transition';
+</script>
+
+<info transition:fly={{ x: -100, duration: 500 }}>
   <h1>Info</h1>
   <p>v0.4 - yewwwww!</p>
 </info>

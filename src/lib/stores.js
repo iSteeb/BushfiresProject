@@ -6,7 +6,7 @@ export const currentState = writable({
   showMenu: true,
   overlayComponent: 0,
   servedAlerts: [], // array of alerts presented to the user
-  nonfunctionalComponents: [1, 3] // array of broken components
+  nonfunctionalComponents: [] // array of broken components
 });
 
 export const defaultState = {
