@@ -27,6 +27,8 @@
           $currentState.appState = 2;
         }, 3000);
       }}>
+      <!-- TODO: prompt the user to think of the route in intro info -->
+
       <instructions>info</instructions>
     </OutClick>
   {/if}

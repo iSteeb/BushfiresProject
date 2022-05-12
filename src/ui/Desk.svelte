@@ -28,7 +28,7 @@
   } else if ($currentState.overlayComponent != 0) {
     speedFactor = 0;
   } else {
-    speedFactor = 11250;
+    speedFactor = 45000;
   }
 
   onMount(() => {
@@ -40,10 +40,14 @@
       if ($currentState.gameState < alerts.length) {
         nextTime = Date.parse(alerts[$currentState.gameState].time);
       }
-    }, 250);
+    }, 1000);
   });
 </script>
 
+<!-- TODO: if alert is extreme, high chance of a device turning off | if alert is advice, high chance of an offline device being restored -->
+<!-- TODO:  desk progresses stage, pulls next data point, and stores it in an appropriate recent data array for each component -->
+
+<!-- TODO: if alert is extreme, high chance of roadblockage occurring | if road blocked and alert drops to advice, road is unblocked | prompt users to think about if they are prepared -->
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <container in:fade={{ delay: 500, duration: 1500 }}>
   <svg

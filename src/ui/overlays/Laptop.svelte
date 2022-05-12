@@ -1,11 +1,34 @@
 <script>
   import { currentState } from '../../lib/stores.js';
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
+  import FiresSite from './applications/FiresSite.svelte';
+
+  let laptopState = 0;
+
+  const scene = {
+    0: false,
+    1: SocialMediaApp,
+    2: FiresSite
+  };
 </script>
 
 <container>
   <viewport>
-    <SocialMediaApp />
+    {#if !$currentState.nonfunctionalComponents.includes(1)}
+      {#if laptopState == 0}
+        <button
+          on:click={() => {
+            laptopState = 1;
+          }}>SocialMedia</button>
+        <button
+          on:click={() => {
+            laptopState = 2;
+          }}>RFS/ACT Site</button>
+      {/if}
+      <svelte:component this={scene[laptopState]} />
+    {:else}
+      you are not connected to the internet
+    {/if}
   </viewport>
 
   <svg
@@ -18,12 +41,21 @@
       height="1793"
       xlink:href="BushfiresProject/laptop.png" />
     <circle
-      r="44"
-      cx="138"
-      cy="120"
+      r="61"
+      cx="2243"
+      cy="121"
       opacity="0"
       on:click={() => {
         $currentState.overlayComponent = 0;
+      }} />
+    <rect
+      x="140"
+      y="60"
+      width="135"
+      height="145"
+      opacity="0"
+      on:click={() => {
+        laptopState = 0;
       }} />
   </svg>
 </container>
