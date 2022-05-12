@@ -1,5 +1,5 @@
 <script>
-  import { currentState, exclude } from '../lib/stores.js';
+  import { currentState } from '../lib/stores.js';
   import { fade } from 'svelte/transition';
   import OutClick from 'svelte-outclick';
 
@@ -26,8 +26,7 @@
         window.setTimeout(() => {
           $currentState.appState = 2;
         }, 3000);
-      }}
-      excludeByDOMNode={[$exclude]}>
+      }}>
       <instructions>info</instructions>
     </OutClick>
   {/if}

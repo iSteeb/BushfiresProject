@@ -44,7 +44,6 @@
   });
 </script>
 
-<!-- TODO: Stop other clicks working whilst paused! -->
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <container in:fade={{ delay: 500, duration: 1500 }}>
   <svg
@@ -68,7 +67,9 @@
       width="532"
       height="395"
       on:click={() => {
-        $currentState.overlayComponent = 1;
+        if (!$currentState.showMenu) {
+          $currentState.overlayComponent = 1;
+        }
       }} />
 
     <!-- radio hitbox -->
@@ -79,7 +80,9 @@
       width="272"
       height="172"
       on:click={() => {
-        $currentState.overlayComponent = 2;
+        if (!$currentState.showMenu) {
+          $currentState.overlayComponent = 2;
+        }
       }} />
 
     <!-- smartphone hitbox -->
@@ -90,7 +93,9 @@
       width="132"
       height="228"
       on:click={() => {
-        $currentState.overlayComponent = 3;
+        if (!$currentState.showMenu) {
+          $currentState.overlayComponent = 3;
+        }
       }} />
 
     <!-- landline hitbox -->
@@ -101,7 +106,9 @@
       width="211"
       height="222 "
       on:click={() => {
-        $currentState.overlayComponent = 4;
+        if (!$currentState.showMenu) {
+          $currentState.overlayComponent = 4;
+        }
       }} />
 
     <!-- game state incrementer -->
@@ -111,8 +118,10 @@
       r="316px"
       opacity="0"
       on:click={() => {
-        $currentState.gameState += 1;
-        time.setTime(Date.parse(alerts[$currentState.gameState - 1].time));
+        if (!$currentState.showMenu) {
+          $currentState.gameState += 1;
+          time.setTime(Date.parse(alerts[$currentState.gameState - 1].time));
+        }
       }} />
 
     <!-- animated clock -->

@@ -4,8 +4,6 @@ export const speech = new SpeechSynthesisUtterance();
 speech.lang = 'en-AU';
 speech.rate = 0.85;
 
-export const exclude = writable();
-
 export const currentState = writable({
   appState: 0, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
   gameState: 0, // index of the current scenario
