@@ -4,13 +4,64 @@
   import { onMount } from 'svelte';
   import Overlay from '../ui/Overlay.svelte';
 
-  let time = new Date('January 27, 2020 14:00:00');
+  let time = new Date('January 27, 2020 14:30:00');
   let hours = time.getHours();
   let minutes = time.getMinutes();
   let seconds = time.getSeconds();
   let startTime = new Date();
-  let speedFactor = 1;
+  let speedFactor = 0;
   let nextTime;
+
+  let THRESHOLD = 0.5;
+
+  function progressGame() {
+    let alertIndex = $currentState.gameState;
+    $currentState.gameState += 1;
+    if (!(alertIndex >= alerts.length)) {
+      componentBreaker(alertIndex);
+      componentFixer(alertIndex);
+      roadBlockToggle(alertIndex);
+    }
+  }
+
+  function componentBreaker(alertIndex) {
+    let rand = Math.random();
+    if (rand >= THRESHOLD && alerts[alertIndex].level == 'emergency warning') {
+      let brokenComponent = Math.floor(Math.random() * 4) + 1;
+      if (!$currentState.nonfunctionalComponents.includes(brokenComponent)) {
+        $currentState.nonfunctionalComponents.push(brokenComponent);
+        console.log('broken' + brokenComponent);
+      }
+    }
+  }
+
+  function componentFixer(alertIndex) {
+    let rand = Math.random();
+    if (rand >= THRESHOLD && alerts[alertIndex].level == 'advice') {
+      let i = Math.floor(
+        Math.random() * $currentState.nonfunctionalComponents.length
+      );
+      console.log('fixed' + $currentState.nonfunctionalComponents[i]);
+      $currentState.nonfunctionalComponents.splice(i, 1);
+    }
+  }
+
+  function roadBlockToggle(alertIndex) {
+    let rand = Math.random();
+    if (
+      !$currentState.roadsBlocked &&
+      rand >= THRESHOLD &&
+      alerts[alertIndex].level == 'emergency warning'
+    ) {
+      $currentState.roadsBlocked = true;
+    } else if (
+      $currentState.roadsBlocked &&
+      rand >= THRESHOLD &&
+      alerts[alertIndex].level == 'advice'
+    ) {
+      $currentState.roadsBlocked = false;
+    }
+  }
 
   $: if ($currentState.gameState > alerts.length) {
     $finalTime = new Date(Date.now() - startTime.getTime())
@@ -20,12 +71,11 @@
   }
 
   $: if (time.getTime() > nextTime && $currentState.gameState < alerts.length) {
-    $currentState.gameState += 1;
+    progressGame();
   }
+  // <!-- TODO:  desk progresses stage, pulls next data point, and stores it in an appropriate recent data array for each component -->
 
-  $: if ($currentState.showMenu) {
-    speedFactor = 0;
-  } else if ($currentState.overlayComponent != 0) {
+  $: if ($currentState.showMenu || $currentState.overlayComponent != 0) {
     speedFactor = 0;
   } else {
     speedFactor = 11250;
@@ -44,10 +94,6 @@
   });
 </script>
 
-<!-- TODO: if alert is extreme, high chance of a device turning off | if alert is advice, high chance of an offline device being restored -->
-<!-- TODO:  desk progresses stage, pulls next data point, and stores it in an appropriate recent data array for each component -->
-
-<!-- TODO: if alert is extreme, high chance of roadblockage occurring | if road blocked and alert drops to advice, road is unblocked | prompt users to think about if they are prepared -->
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <container
   in:fade={{ delay: 500, duration: 1500 }}
@@ -110,7 +156,7 @@
       y="1406"
       opacity="0"
       width="211"
-      height="222 "
+      height="222"
       on:click={() => {
         if (!$currentState.showMenu) {
           $currentState.overlayComponent = 4;
@@ -125,8 +171,10 @@
       opacity="0"
       on:click={() => {
         if (!$currentState.showMenu) {
-          $currentState.gameState += 1;
-          time.setTime(Date.parse(alerts[$currentState.gameState - 1].time));
+          progressGame();
+          if ($currentState.gameState < alerts.length) {
+            time.setTime(Date.parse(alerts[$currentState.gameState - 1].time));
+          }
         }
       }} />
 

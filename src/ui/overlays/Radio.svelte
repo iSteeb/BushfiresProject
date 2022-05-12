@@ -12,14 +12,18 @@
   staticAudio.volume = 0.25;
 
   function toggleAlert() {
-    if (playbackEnabled) {
+    if (playbackEnabled && $currentState.gameState > 0) {
+      let roadBlockMessage = $currentState.roadsBlocked
+        ? 'Be aware that a principle road on your evacuation route has been blocked. Do you have an alternate route to take? '
+        : '';
       speech.text =
         'You are listening to your local news radio station bringing you the latest update on the bushfire. The fire is currently classed at the ' +
-        alerts[$currentState.gameState].level +
+        alerts[$currentState.gameState - 1].level +
         ' level. ' +
-        alerts[$currentState.gameState].threat +
+        roadBlockMessage +
+        alerts[$currentState.gameState - 1].threat +
         ' ' +
-        alerts[$currentState.gameState].shortText +
+        alerts[$currentState.gameState - 1].shortText +
         " You can also check out the latest news on the bushfire on your local fire agency's website.";
 
       if (window.speechSynthesis.speaking) {

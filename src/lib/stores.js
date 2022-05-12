@@ -5,8 +5,8 @@ export const currentState = writable({
   gameState: 0, // index of the current scenario
   showMenu: true,
   overlayComponent: 0,
-  servedAlerts: [], // array of alerts presented to the user
-  nonfunctionalComponents: [] // array of broken components
+  nonfunctionalComponents: [], // array of broken components
+  roadsBlocked: false
 });
 
 export const defaultState = {
@@ -14,8 +14,8 @@ export const defaultState = {
   gameState: 0,
   showMenu: true,
   overlayComponent: 0,
-  servedAlerts: [],
-  nonfunctionalComponents: [] // array of broken components
+  nonfunctionalComponents: [], // array of broken components
+  roadsBlocked: false
 };
 
 export const finalTime = writable('00:00:00');
@@ -37,12 +37,18 @@ export const alerts = [
     fullText: 'long text 2 here',
     shortText: 'short text 2 here'
   },
-
   {
     time: 'January 29, 2020 13:37:00',
     level: 'emergency warning',
     threat: 'SEEK SHELTER IMMEDIATELY. It is now too late to leave.',
     fullText: 'long text 3 here',
     shortText: 'short text 3 here'
+  },
+  {
+    time: 'January 29, 2020 15:00:00',
+    level: 'advice',
+    threat: 'There is no longer any threat.',
+    fullText: 'The fire is entirely contained.',
+    shortText: 'The fire is entirely contained.'
   }
 ];
