@@ -6,6 +6,7 @@ export const currentState = writable({
   showMenu: true,
   overlayComponent: 0,
   nonfunctionalComponents: [], // array of broken components
+  servedAlertsIndexes: [], // array of alerts
   roadsBlocked: false
 });
 
@@ -14,7 +15,8 @@ export const defaultState = {
   gameState: 0,
   showMenu: true,
   overlayComponent: 0,
-  nonfunctionalComponents: [], // array of broken components
+  nonfunctionalComponents: [],
+  servedAlertsIndexes: [],
   roadsBlocked: false
 };
 

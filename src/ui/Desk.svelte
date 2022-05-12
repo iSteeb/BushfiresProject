@@ -12,7 +12,7 @@
   let speedFactor = 0;
   let nextTime;
 
-  let THRESHOLD = 0.5;
+  const THRESHOLD = 0.5;
 
   function progressGame() {
     let alertIndex = $currentState.gameState;
@@ -30,18 +30,20 @@
       let brokenComponent = Math.floor(Math.random() * 4) + 1;
       if (!$currentState.nonfunctionalComponents.includes(brokenComponent)) {
         $currentState.nonfunctionalComponents.push(brokenComponent);
-        console.log('broken' + brokenComponent);
       }
     }
   }
 
   function componentFixer(alertIndex) {
     let rand = Math.random();
-    if (rand >= THRESHOLD && alerts[alertIndex].level == 'advice') {
+    if (
+      rand >= THRESHOLD &&
+      alerts[alertIndex].level == 'advice' &&
+      $currentState.nonfunctionalComponents.length > 0
+    ) {
       let i = Math.floor(
         Math.random() * $currentState.nonfunctionalComponents.length
       );
-      console.log('fixed' + $currentState.nonfunctionalComponents[i]);
       $currentState.nonfunctionalComponents.splice(i, 1);
     }
   }
@@ -73,7 +75,6 @@
   $: if (time.getTime() > nextTime && $currentState.gameState < alerts.length) {
     progressGame();
   }
-  // <!-- TODO:  desk progresses stage, pulls next data point, and stores it in an appropriate recent data array for each component -->
 
   $: if ($currentState.showMenu || $currentState.overlayComponent != 0) {
     speedFactor = 0;
