@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 export const currentState = writable({
-  appState: 2, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
+  appState: 0, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
   gameState: 0, // index of the current scenario
   showMenu: true,
   overlayComponent: 0,
@@ -19,6 +19,9 @@ export const defaultState = {
   servedAlertsIndexes: [],
   roadsBlocked: false
 };
+
+export const DISPLAYLIMIT = 5;
+export const THRESHOLD = 0.5;
 
 export const finalTime = writable('00:00:00');
 

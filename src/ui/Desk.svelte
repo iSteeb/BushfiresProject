@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { currentState, alerts, finalTime } from '../lib/stores.js';
+  import { currentState, alerts, finalTime, THRESHOLD } from '../lib/stores.js';
   import { onMount } from 'svelte';
   import Overlay from '../ui/Overlay.svelte';
 
@@ -11,8 +11,6 @@
   let startTime = new Date();
   let speedFactor = 0;
   let nextTime;
-
-  const THRESHOLD = 0.5;
 
   function progressGame() {
     let alertIndex = $currentState.gameState;

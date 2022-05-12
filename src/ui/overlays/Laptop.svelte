@@ -1,9 +1,21 @@
 <script>
-  import { currentState } from '../../lib/stores.js';
+  import { currentState, DISPLAYLIMIT } from '../../lib/stores.js';
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
   import FiresSite from './applications/FiresSite.svelte';
 
   let laptopState = 0;
+
+  function getIndexes() {
+    let alertIndex = $currentState.gameState - 1;
+    $currentState.servedAlertsIndexes = [];
+    while (
+      alertIndex >= 0 &&
+      $currentState.servedAlertsIndexes.length < DISPLAYLIMIT
+    ) {
+      $currentState.servedAlertsIndexes.push(alertIndex);
+      alertIndex -= 1;
+    }
+  }
 
   const scene = {
     0: false,
@@ -18,14 +30,18 @@
       {#if laptopState == 0}
         <button
           on:click={() => {
+            getIndexes();
             laptopState = 1;
           }}>SocialMedia</button>
         <button
           on:click={() => {
+            getIndexes();
             laptopState = 2;
           }}>RFS/ACT Site</button>
       {/if}
-      <svelte:component this={scene[laptopState]} />
+      <svelte:component
+        this={scene[laptopState]}
+        alertIndexes={$currentState.servedAlertsIndexes} />
     {:else}
       you are not connected to the internet
     {/if}

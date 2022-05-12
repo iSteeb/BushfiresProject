@@ -1,13 +1,11 @@
 <script>
-  import { currentState } from '../../lib/stores.js';
+  import { currentState, DISPLAYLIMIT } from '../../lib/stores.js';
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
   import FiresSite from './applications/FiresSite.svelte';
   import MessagesApp from './applications/MessagesApp.svelte';
   import PhoneApp from './applications/PhoneApp.svelte';
 
   let smartphoneState = 0;
-
-  const DISPLAYLIMIT = 3;
 
   function getIndexes() {
     let alertIndex = $currentState.gameState - 1;
@@ -57,7 +55,6 @@
           smartphoneState = 4;
         }}>PhoneApp</button>
     {/if}
-    <!-- TODO: pass the array into this component and show the messages from the array index -->
     <svelte:component
       this={scene[smartphoneState]}
       alertIndexes={$currentState.servedAlertsIndexes} />
