@@ -1,12 +1,15 @@
 Bushfire Simulator App
 Bushfires Project
 
-<!-- TODO -->
+<!-- TODO: if alert is extreme, high chance of a device turning off | if alert is advice, high chance of an offline device being restored -->
+<!-- TODO:  desk progresses stage, pulls next data point, and stores it in an appropriate recent data array for each component -->
 
-- [ ] Random chance, at every alert, that a device goes offline (may come back online?) - extended idea: random devices are either offline (no signal) or just don’t disseminate the information - same alert is presented at every stage (minus emergecy alert texts maybe)
-- [ ] Prompt users with other preparedness items to escalate threat (e.g. have you cleared the gutters? If no, now you have to deal with embers).
-- [ ] Roadblocks: your primary route has been blocked, do you have a secondary OR you’ve left it too late! Are you prepared?
-- [ ] prompt the user to think of the route they need to change it at a later stage
+<!-- TODO: if alert is extreme, high chance of roadblockage occurring | if road blocked and alert drops to advice, road is unblocked | prompt users to think about if they are prepared -->
+
+<!-- TODO: if alert is extreme do not leave, then prompt users with a fire threat (embers in gutters, etc) | if extreme drops to advice, reset this -->
+<!-- TODO: prompt the user to think of the route in intro info -->
+<!-- TODO:  -->
+<!-- TODO:  -->
 
 literature review needs to better justify the design
 how to theoretically motivate people cognitive theory 3900 interaction design textbook chapter
