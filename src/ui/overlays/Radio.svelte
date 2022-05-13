@@ -10,7 +10,6 @@
   let staticAudio = new Audio('BushfiresProject/static.wav');
   staticAudio.loop = AUDIOSETTINGS.loop;
   staticAudio.volume = AUDIOSETTINGS.volume;
-  // <!-- todo: fix the -1 -->
 
   function toggleAlert() {
     if (playbackEnabled && $currentState.gameState >= 0) {

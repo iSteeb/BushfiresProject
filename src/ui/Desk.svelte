@@ -25,13 +25,14 @@
 
   function progressGame() {
     $currentState.gameState += 1;
+
     if ($currentState.gameState < alerts.length - 1) {
       time.setTime(Date.parse(alerts[$currentState.gameState].time));
       componentBreaker($currentState.gameState);
       componentFixer($currentState.gameState);
       roadBlockToggle($currentState.gameState);
       getIndexes($currentState.gameState);
-    } else if (($currentState.gameState = alerts.length - 1)) {
+    } else if ($currentState.gameState == alerts.length - 1) {
       time.setTime(Date.parse(alerts[$currentState.gameState].time));
       $currentState.roadsBlocked = false;
       $currentState.nonfunctionalComponents = [];
