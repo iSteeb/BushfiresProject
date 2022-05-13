@@ -40,19 +40,18 @@
       r="61"
       cx="2243"
       cy="121"
-      opacity="0"
       on:click={() => {
         $currentState.overlayComponent = 0;
-      }} />
-    <rect
-      x="140"
-      y="60"
-      width="135"
-      height="145"
-      opacity="0"
+      }}
+      class="clickable" />
+    <circle
+      r="61"
+      cx="191"
+      cy="121"
       on:click={() => {
         laptopState = 0;
-      }} />
+      }}
+      class="clickable" />
   </svg>
 </container>
 
@@ -83,5 +82,23 @@
       width: 80vw;
       height: auto;
     }
+  }
+  @keyframes glow {
+    0% {
+      opacity: 0.1;
+    }
+    25% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0.1;
+    }
+  }
+  .clickable {
+    fill: #dfaa6e;
+    animation: glow 3s linear infinite;
   }
 </style>

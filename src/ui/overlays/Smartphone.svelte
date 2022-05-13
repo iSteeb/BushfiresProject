@@ -51,13 +51,13 @@
       height="1816"
       xlink:href="BushfiresProject/smartphone.png" />
     <circle
-      r="48"
-      cx="524"
-      cy="1739"
-      opacity="0.5"
+      r="49"
+      cx="525"
+      cy="1738"
       on:click={() => {
         smartphoneState = 0;
-      }} />
+      }}
+      class="clickable" />
   </svg>
 </container>
 
@@ -104,5 +104,23 @@
       width: 80vw;
       height: auto;
     }
+  }
+  @keyframes glow {
+    0% {
+      opacity: 0.1;
+    }
+    25% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0.1;
+    }
+  }
+  .clickable {
+    fill: #dfaa6e;
+    animation: glow 3s linear infinite;
   }
 </style>
