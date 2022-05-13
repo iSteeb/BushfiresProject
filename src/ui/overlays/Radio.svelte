@@ -13,7 +13,7 @@
   // <!-- todo: fix the -1 -->
 
   function toggleAlert() {
-    if (playbackEnabled && $currentState.gameState > 0) {
+    if (playbackEnabled && $currentState.gameState >= 0) {
       let roadBlockMessage = $currentState.roadsBlocked
         ? 'Be aware that a principle road on your evacuation route has been blocked. Do you have an alternate route to take? '
         : '';
@@ -49,6 +49,7 @@
   });
 </script>
 
+{$currentState.gameState}
 <container>
   <svg
     version="1.1"

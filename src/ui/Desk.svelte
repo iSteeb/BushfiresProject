@@ -25,14 +25,18 @@
 
   function progressGame() {
     $currentState.gameState += 1;
-    if (!($currentState.gameState > alerts.length - 1)) {
+    if ($currentState.gameState < alerts.length - 1) {
       time.setTime(Date.parse(alerts[$currentState.gameState].time));
       componentBreaker($currentState.gameState);
       componentFixer($currentState.gameState);
       roadBlockToggle($currentState.gameState);
       getIndexes($currentState.gameState);
-    }
-    if ($currentState.gameState >= alerts.length) {
+    } else if (($currentState.gameState = alerts.length - 1)) {
+      time.setTime(Date.parse(alerts[$currentState.gameState].time));
+      $currentState.roadsBlocked = false;
+      $currentState.nonfunctionalComponents = [];
+      getIndexes($currentState.gameState);
+    } else {
       $finalTime = new Date(Date.now() - startTime.getTime())
         .toISOString()
         .slice(11, 19);

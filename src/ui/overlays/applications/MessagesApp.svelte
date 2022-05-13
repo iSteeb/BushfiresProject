@@ -1,4 +1,3 @@
-<!-- TODO: THIS -->
 <script>
   import { currentState, alerts } from '../../../lib/stores.js';
 
