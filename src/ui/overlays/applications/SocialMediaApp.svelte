@@ -1,13 +1,11 @@
 <!-- TODO: THIS -->
 <script>
   import { currentState, alerts } from '../../../lib/stores.js';
-
-  export let alertIndexes = [];
 </script>
 
 <!-- phone only -->
 
-{#each alertIndexes as index}
+{#each $currentState.servedAlertsIndexes as index}
   {alerts[index].time}
   {alerts[index].level}
   {$currentState.roadsBlocked}

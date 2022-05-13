@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store';
 
 export const currentState = writable({
-  appState: 0, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
-  gameState: 0, // index of the current scenario
+  appState: 2, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
+  gameState: -1, // index of the current scenario
   showMenu: true,
   overlayComponent: 0,
   nonfunctionalComponents: [], // array of broken components
@@ -12,7 +12,7 @@ export const currentState = writable({
 
 export const defaultState = {
   appState: 0,
-  gameState: 0,
+  gameState: -1,
   showMenu: true,
   overlayComponent: 0,
   nonfunctionalComponents: [],
@@ -20,8 +20,13 @@ export const defaultState = {
   roadsBlocked: false
 };
 
-export const DISPLAYLIMIT = 5;
+export const DISPLAYLIMIT = 3;
 export const THRESHOLD = 0.5;
+export const AUDIOSETTINGS = {
+  lang: 'en-AU',
+  loop: true,
+  volume: 0.25
+};
 
 export const finalTime = writable('00:00:00');
 

@@ -2,7 +2,7 @@
 <script>
   import { currentState, alerts } from '../../../lib/stores.js';
 
-  export let alertIndexes = [];
+  let alertIndexes = $currentState.servedAlertsIndexes;
   alertIndexes.reverse();
 </script>
 

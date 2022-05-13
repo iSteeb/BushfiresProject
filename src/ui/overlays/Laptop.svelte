@@ -5,18 +5,6 @@
 
   let laptopState = 0;
 
-  function getIndexes() {
-    let alertIndex = $currentState.gameState - 1;
-    $currentState.servedAlertsIndexes = [];
-    while (
-      alertIndex >= 0 &&
-      $currentState.servedAlertsIndexes.length < DISPLAYLIMIT
-    ) {
-      $currentState.servedAlertsIndexes.push(alertIndex);
-      alertIndex -= 1;
-    }
-  }
-
   const scene = {
     0: false,
     1: SocialMediaApp,
@@ -30,18 +18,14 @@
       {#if laptopState == 0}
         <button
           on:click={() => {
-            getIndexes();
             laptopState = 1;
           }}>SocialMedia</button>
         <button
           on:click={() => {
-            getIndexes();
             laptopState = 2;
           }}>RFS/ACT Site</button>
       {/if}
-      <svelte:component
-        this={scene[laptopState]}
-        alertIndexes={$currentState.servedAlertsIndexes} />
+      <svelte:component this={scene[laptopState]} />
     {:else}
       you are not connected to the internet
     {/if}

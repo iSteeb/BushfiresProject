@@ -1,15 +1,16 @@
 <script>
   import { onDestroy } from 'svelte';
 
-  import { currentState, alerts } from '../../lib/stores.js';
+  import { currentState, alerts, AUDIOSETTINGS } from '../../lib/stores.js';
 
   let speech = new SpeechSynthesisUtterance();
-  speech.lang = 'en-AU';
+  speech.lang = AUDIOSETTINGS.lang;
 
   let playbackEnabled = !$currentState.nonfunctionalComponents.includes(2);
   let staticAudio = new Audio('BushfiresProject/static.wav');
-  staticAudio.loop = true;
-  staticAudio.volume = 0.25;
+  staticAudio.loop = AUDIOSETTINGS.loop;
+  staticAudio.volume = AUDIOSETTINGS.volume;
+  // <!-- todo: fix the -1 -->
 
   function toggleAlert() {
     if (playbackEnabled && $currentState.gameState > 0) {
@@ -18,12 +19,12 @@
         : '';
       speech.text =
         'You are listening to your local news radio station bringing you the latest update on the bushfire. The fire is currently classed at the ' +
-        alerts[$currentState.gameState - 1].level +
+        alerts[$currentState.gameState].level +
         ' level. ' +
         roadBlockMessage +
-        alerts[$currentState.gameState - 1].threat +
+        alerts[$currentState.gameState].threat +
         ' ' +
-        alerts[$currentState.gameState - 1].shortText +
+        alerts[$currentState.gameState].shortText +
         " You can also check out the latest news on the bushfire on your local fire agency's website.";
 
       if (window.speechSynthesis.speaking) {

@@ -1,10 +1,16 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { currentState, alerts, finalTime, THRESHOLD } from '../lib/stores.js';
+  import {
+    currentState,
+    alerts,
+    finalTime,
+    THRESHOLD,
+    DISPLAYLIMIT
+  } from '../lib/stores.js';
   import { onMount } from 'svelte';
   import Overlay from '../ui/Overlay.svelte';
 
-  let time = new Date('January 27, 2020 14:30:00');
+  let time = new Date('January 27, 2020 14:31:59');
   let hours = time.getHours();
   let minutes = time.getMinutes();
   let seconds = time.getSeconds();
@@ -12,13 +18,36 @@
   let speedFactor = 0;
   let nextTime;
 
+  // reenable scrolling
+  window.onscroll = () => {
+    window.scrollTo(window.scrollX, window.scrollY);
+  };
+
   function progressGame() {
-    let alertIndex = $currentState.gameState;
     $currentState.gameState += 1;
-    if (!(alertIndex >= alerts.length)) {
-      componentBreaker(alertIndex);
-      componentFixer(alertIndex);
-      roadBlockToggle(alertIndex);
+    if (!($currentState.gameState > alerts.length - 1)) {
+      time.setTime(Date.parse(alerts[$currentState.gameState].time));
+      componentBreaker($currentState.gameState);
+      componentFixer($currentState.gameState);
+      roadBlockToggle($currentState.gameState);
+      getIndexes($currentState.gameState);
+    }
+    if ($currentState.gameState >= alerts.length) {
+      $finalTime = new Date(Date.now() - startTime.getTime())
+        .toISOString()
+        .slice(11, 19);
+      $currentState.appState = 3;
+    }
+  }
+
+  function getIndexes(alertIndex) {
+    $currentState.servedAlertsIndexes = [];
+    while (
+      alertIndex >= 0 &&
+      $currentState.servedAlertsIndexes.length < DISPLAYLIMIT
+    ) {
+      $currentState.servedAlertsIndexes.push(alertIndex);
+      alertIndex -= 1;
     }
   }
 
@@ -63,14 +92,10 @@
     }
   }
 
-  $: if ($currentState.gameState > alerts.length) {
-    $finalTime = new Date(Date.now() - startTime.getTime())
-      .toISOString()
-      .slice(11, 19);
-    $currentState.appState = 3;
-  }
-
-  $: if (time.getTime() > nextTime && $currentState.gameState < alerts.length) {
+  $: if (
+    time.getTime() > nextTime &&
+    $currentState.gameState < alerts.length - 1
+  ) {
     progressGame();
   }
 
@@ -86,13 +111,16 @@
       hours = time.getHours();
       minutes = time.getMinutes();
       seconds = time.getSeconds();
-      if ($currentState.gameState < alerts.length) {
-        nextTime = Date.parse(alerts[$currentState.gameState].time);
+      if ($currentState.gameState < alerts.length - 1) {
+        nextTime = Date.parse(alerts[$currentState.gameState + 1].time);
       }
     }, 250);
   });
 </script>
 
+{#if $currentState.gameState >= alerts.length - 1}
+  Game Over - Click the the clock? to Continue {$currentState.gameState}
+{/if}
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <container
   in:fade={{ delay: 500, duration: 1500 }}
@@ -103,12 +131,6 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 2400 1800">
     <image width="2400" height="1800" xlink:href="BushfiresProject/desk.png" />
-
-    {#if $currentState.gameState >= alerts.length}
-      <text x="408" y="850" text-anchor="middle">
-        Game Over - Click the Clock to Continue
-      </text>
-    {/if}
 
     <!-- laptop hitbox -->
     <rect
@@ -167,13 +189,10 @@
       cx="408"
       cy="483"
       r="316px"
-      opacity="0"
+      opacity="0.2"
       on:click={() => {
         if (!$currentState.showMenu) {
           progressGame();
-          if ($currentState.gameState < alerts.length) {
-            time.setTime(Date.parse(alerts[$currentState.gameState - 1].time));
-          }
         }
       }} />
 

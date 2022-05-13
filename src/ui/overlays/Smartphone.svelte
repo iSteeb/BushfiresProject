@@ -7,18 +7,6 @@
 
   let smartphoneState = 0;
 
-  function getIndexes() {
-    let alertIndex = $currentState.gameState - 1;
-    $currentState.servedAlertsIndexes = [];
-    while (
-      alertIndex >= 0 &&
-      $currentState.servedAlertsIndexes.length < DISPLAYLIMIT
-    ) {
-      $currentState.servedAlertsIndexes.push(alertIndex);
-      alertIndex -= 1;
-    }
-  }
-
   const scene = {
     0: false,
     1: SocialMediaApp,
@@ -36,28 +24,22 @@
     {#if smartphoneState == 0}
       <button
         on:click={() => {
-          getIndexes();
           smartphoneState = 1;
         }}>SocialMedia</button>
       <button
         on:click={() => {
-          getIndexes();
           smartphoneState = 2;
         }}>RFS/ACT Site</button>
       <button
         on:click={() => {
-          getIndexes();
           smartphoneState = 3;
         }}>Messages App</button>
       <button
         on:click={() => {
-          getIndexes();
           smartphoneState = 4;
         }}>PhoneApp</button>
     {/if}
-    <svelte:component
-      this={scene[smartphoneState]}
-      alertIndexes={$currentState.servedAlertsIndexes} />
+    <svelte:component this={scene[smartphoneState]} />
   </viewport>
   <svg
     version="1.1"
