@@ -4,15 +4,20 @@
 
   let alertIndexes = $currentState.servedAlertsIndexes;
   alertIndexes.reverse();
+  export let parent;
 </script>
 
 <!-- phone only -->
+{#if !$currentState.nonfunctionalComponents.includes(parent)}
+  {parent}
 
-{#each alertIndexes as index}
-  {#if alerts[index].level == 'emergency warning'}
+  {#each $currentState.servedAlertsIndexes as index}
     {alerts[index].time}
     {alerts[index].level}
+    {$currentState.roadsBlocked}
     {alerts[index].threat}
-    for more info, visit the site<br /><br />
-  {/if}
-{/each}
+    {alerts[index].fullText}<br /><br />
+  {/each}
+{:else}
+  the {parent} is broken
+{/if}

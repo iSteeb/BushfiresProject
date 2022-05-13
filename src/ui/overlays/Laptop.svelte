@@ -14,21 +14,17 @@
 
 <container>
   <viewport>
-    {#if !$currentState.nonfunctionalComponents.includes(1)}
-      {#if laptopState == 0}
-        <button
-          on:click={() => {
-            laptopState = 1;
-          }}>SocialMedia</button>
-        <button
-          on:click={() => {
-            laptopState = 2;
-          }}>RFS/ACT Site</button>
-      {/if}
-      <svelte:component this={scene[laptopState]} />
-    {:else}
-      you are not connected to the internet
+    {#if laptopState == 0}
+      <button
+        on:click={() => {
+          laptopState = 1;
+        }}>SocialMedia</button>
+      <button
+        on:click={() => {
+          laptopState = 2;
+        }}>RFS/ACT Site</button>
     {/if}
+    <svelte:component this={scene[laptopState]} parent={1} />
   </viewport>
 
   <svg

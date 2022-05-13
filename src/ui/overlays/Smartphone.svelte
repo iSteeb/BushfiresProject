@@ -39,7 +39,7 @@
           smartphoneState = 4;
         }}>PhoneApp</button>
     {/if}
-    <svelte:component this={scene[smartphoneState]} />
+    <svelte:component this={scene[smartphoneState]} parent={3} />
   </viewport>
   <svg
     version="1.1"

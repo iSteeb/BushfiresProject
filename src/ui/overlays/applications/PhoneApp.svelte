@@ -1,11 +1,11 @@
 <script>
   import { onDestroy } from 'svelte';
   import { currentState, alerts, AUDIOSETTINGS } from '../../../lib/stores.js';
-
+  export let parent;
   let speech = new SpeechSynthesisUtterance();
   speech.lang = AUDIOSETTINGS.lang;
 
-  let playbackEnabled = !$currentState.nonfunctionalComponents.includes(3);
+  let playbackEnabled = !$currentState.nonfunctionalComponents.includes(parent);
   let toneAudio = new Audio('BushfiresProject/tone.mp3');
   toneAudio.loop = AUDIOSETTINGS.loop;
   toneAudio.volume = AUDIOSETTINGS.volume;
