@@ -29,7 +29,7 @@
       }}>
       <!-- TODO: prompt the user to think of the route in intro info also inform users that stuff may break (phones etc) as the fire gets worse, but may also come back online as it gets better -->
 
-      <instructions>info</instructions>
+      <instructions class="popup">info</instructions>
     </OutClick>
   {/if}
 </container>

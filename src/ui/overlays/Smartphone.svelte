@@ -57,7 +57,7 @@
       on:click={() => {
         smartphoneState = 0;
       }}
-      class="clickable" />
+      class={$currentState.glow} />
   </svg>
 </container>
 
@@ -104,23 +104,5 @@
       width: 80vw;
       height: auto;
     }
-  }
-  @keyframes glow {
-    0% {
-      opacity: 0.1;
-    }
-    25% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.1;
-    }
-    100% {
-      opacity: 0.1;
-    }
-  }
-  .clickable {
-    fill: #dfaa6e;
-    animation: glow 3s linear infinite;
   }
 </style>

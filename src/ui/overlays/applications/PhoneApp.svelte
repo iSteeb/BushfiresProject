@@ -45,7 +45,6 @@
   });
 </script>
 
-{playbackEnabled}
 <container>
   <button
     on:click={() => {

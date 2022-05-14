@@ -4,6 +4,7 @@ export const currentState = writable({
   appState: 2, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
   gameState: -1, // index of the current scenario
   showMenu: true,
+  glow: 'clickableWithGlow',
   overlayComponent: 0,
   nonfunctionalComponents: [], // array of broken components
   servedAlertsIndexes: [], // array of alerts
@@ -14,6 +15,7 @@ export const defaultState = {
   appState: 0,
   gameState: -1,
   showMenu: true,
+  glow: 'clickableWithGlow',
   overlayComponent: 0,
   nonfunctionalComponents: [],
   servedAlertsIndexes: [],
