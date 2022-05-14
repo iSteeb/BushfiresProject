@@ -25,14 +25,17 @@
 {#if $currentState.overlayComponent != 99 && $currentState.showMenu}
   <menu transition:fly={{ x: -100, duration: 500 }}>
     <button
+      class="btn"
       on:click={() => {
         $currentState.showMenu = false;
       }}>resume</button>
     <button
+      class="btn"
       on:click={() => {
         $currentState = Object.assign({}, defaultState);
       }}>reset</button>
     <button
+      class="btn"
       on:click={() => {
         if ($currentState.glow == 'clickableWithGlow') {
           $currentState.glow = 'clickableNoGlow';
@@ -41,9 +44,10 @@
         }
       }}>toggle glow</button>
     <button
+      class="btn"
       on:click={() => {
         $currentState.overlayComponent = 99;
-      }}>info</button>
+      }}>help</button>
   </menu>
 {:else if $currentState.overlayComponent != 99 && !$currentState.showMenu}
   <!-- REF: https://gist.github.com/philsinatra/2ab3b7c07211e4e42ce1 -->

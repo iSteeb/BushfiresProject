@@ -1,6 +1,7 @@
 #app {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: radial-gradient(#92783727 40%, #fa3f3f38);
+  background: radial-gradient(#d4d4d49c 60%, #b9797964);
+  animation: gradient 15s ease infinite;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -54,7 +55,7 @@
   }
 }
 
-button {
+.btn {
   display: block;
   margin-top: 10px;
   font-family: inherit;
@@ -72,14 +73,58 @@ button {
   box-shadow: 0 0 5px #000;
 }
 
-button:hover {
+.btn:hover {
   border: 2px solid #666666;
   background-color: #666666;
   transition: background-color 0.5s, border 0.5s, color 0.5s;
 }
 
-button:active {
+.btn:active {
   border: 2px solid #f5f5f5;
   background-color: #f5f5f5;
   color: #424242;
+}
+
+.icon {
+  display: flex;
+  aspect-ratio: 1/1;
+  height: min(10vh, 10vw);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 0 5px #000;
+}
+#social {
+  background-color: rgb(70, 70, 135);
+  border: 2px solid rgb(70, 70, 135);
+}
+#social:active {
+  border: 2px solid rgb(75, 75, 135);
+  background-color: rgb(75, 75, 135);
+}
+
+#esa {
+  background-color: rgb(135, 95, 70);
+  border: 2px solid rgb(135, 95, 70);
+}
+#esa:active {
+  border: 2px solid rgb(135, 114, 70);
+  background-color: rgb(135, 114, 70);
+}
+#messages {
+  background-color: rgb(70, 135, 70);
+  border: 2px solid rgb(70, 135, 70);
+}
+#messages:active {
+  border: 2px solid rgb(70, 135, 100);
+  background-color: rgb(70, 135, 100);
+}
+#phone {
+  border: 2px solid rgb(70, 135, 100);
+  background-color: rgb(70, 135, 100);
+}
+#phone:active {
+  background-color: rgb(70, 135, 70);
+  border: 2px solid rgb(70, 135, 70);
 }

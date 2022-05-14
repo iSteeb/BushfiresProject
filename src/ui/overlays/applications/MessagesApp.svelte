@@ -8,15 +8,35 @@
 
 <!-- phone only -->
 {#if !$currentState.nonfunctionalComponents.includes(parent)}
-  {parent}
-
   {#each $currentState.servedAlertsIndexes as index}
-    {alerts[index].time}
-    {alerts[index].level}
-    {$currentState.roadsBlocked}
-    {alerts[index].threat}
-    {alerts[index].fullText}<br /><br />
+    {#if alerts[index].level == 'emergency warning'}
+      <div class="message">
+        {alerts[index].time}
+        {alerts[index].level}
+        {$currentState.roadsBlocked}
+        {alerts[index].threat}
+        {alerts[index].fullText}
+      </div>
+    {/if}
   {/each}
 {:else}
-  the {parent} is broken
+  <div id="loading">Could not load messages...</div>
 {/if}
+
+<style>
+  #loading {
+    width: 100%;
+    position: relative;
+    text-align: center;
+  }
+  .message {
+    margin-left: 1%;
+    margin-top: 1%;
+    border-radius: 1.15rem;
+    line-height: 1.25;
+    max-width: 75%;
+    padding: 3%;
+    position: relative;
+    background-color: rgb(142, 231, 107);
+  }
+</style>

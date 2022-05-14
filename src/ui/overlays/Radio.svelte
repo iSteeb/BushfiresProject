@@ -3,6 +3,8 @@
 
   import { currentState, alerts, AUDIOSETTINGS } from '../../lib/stores.js';
 
+  let powerState = 'off';
+
   let speech = new SpeechSynthesisUtterance();
   speech.lang = AUDIOSETTINGS.lang;
 
@@ -12,6 +14,8 @@
   staticAudio.volume = AUDIOSETTINGS.volume;
 
   function toggleAlert() {
+    powerState = powerState == 'off' ? 'on' : 'off';
+
     if (playbackEnabled && $currentState.gameState >= 0) {
       let roadBlockMessage = $currentState.roadsBlocked
         ? 'Be aware that a principle road on your evacuation route has been blocked. Do you have an alternate route to take? '
@@ -56,15 +60,42 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 1092 692">
     <image width="1092" height="692" xlink:href="BushfiresProject/radio.png" />
-    <circle
-      cx="448"
-      cy="448"
-      r="50"
-      fill="#222"
+    <g
       on:click={() => {
         toggleAlert();
       }}
-      class={$currentState.glow} />
+      transform="translate(835,385) scale(2)">
+      <defs>
+        <style>
+          .b {
+            stroke-width: 5px;
+          }
+          .b,
+          .c {
+            fill: transparent;
+            stroke: #424242;
+            stroke-miterlimit: 10;
+          }
+          .c {
+            stroke-width: 3px;
+          }
+          text {
+            fill: #424242;
+          }
+        </style>
+      </defs>
+      <path
+        class="b"
+        d="M43.34091,10.64885c6.58962,4.68791,10.88801,12.38692,10.88801,21.08988,0,14.28455-11.57991,25.86446-25.86446,25.86446S2.5,46.02327,2.5,31.73873c0-8.70298,4.29842-16.40201,10.88806-21.08991" /><rect
+        class="c"
+        x="27.37139"
+        y="1.5"
+        width="1.98613"
+        height="30.47745" />
+      <text x="29" y="47" text-anchor="middle" color="#aaaaaa">
+        {powerState}
+      </text>
+    </g>
   </svg>
 </container>
 

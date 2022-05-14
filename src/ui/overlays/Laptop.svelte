@@ -15,14 +15,30 @@
 <container>
   <viewport>
     {#if laptopState == 0}
-      <button
-        on:click={() => {
-          laptopState = 1;
-        }}>SocialMedia</button>
-      <button
-        on:click={() => {
-          laptopState = 2;
-        }}>RFS/ACT Site</button>
+      <bookmarks>
+        <button
+          class="icon"
+          id="social"
+          on:click={() => {
+            laptopState = 1;
+          }}
+          ><img
+            src="BushfiresProject/fbIcon.png"
+            height="100%"
+            width="100%"
+            alt="social media app" /></button>
+        <button
+          class="icon"
+          id="esa"
+          on:click={() => {
+            laptopState = 2;
+          }}
+          ><img
+            src="BushfiresProject/esaIcon.png"
+            height="100%"
+            width="100%"
+            alt="esa app" /></button>
+      </bookmarks>
     {/if}
     <svelte:component this={scene[laptopState]} parent={1} />
   </viewport>
@@ -56,6 +72,16 @@
 </container>
 
 <style>
+  bookmarks {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    height: 100%;
+  }
   container {
     position: absolute;
     top: 50%;
@@ -69,6 +95,7 @@
     height: 81.35%;
     width: 94.55%;
     border-radius: 20px;
+    overflow: scroll;
   }
   @media (orientation: landscape) {
     svg {

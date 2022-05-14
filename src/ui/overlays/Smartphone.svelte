@@ -22,22 +22,52 @@
   </signal>
   <viewport>
     {#if smartphoneState == 0}
-      <button
-        on:click={() => {
-          smartphoneState = 1;
-        }}>SocialMedia</button>
-      <button
-        on:click={() => {
-          smartphoneState = 2;
-        }}>RFS/ACT Site</button>
-      <button
-        on:click={() => {
-          smartphoneState = 3;
-        }}>Messages App</button>
-      <button
-        on:click={() => {
-          smartphoneState = 4;
-        }}>PhoneApp</button>
+      <apps>
+        <button
+          class="icon"
+          id="social"
+          on:click={() => {
+            smartphoneState = 1;
+          }}
+          ><img
+            src="BushfiresProject/fbIcon.png"
+            height="100%"
+            width="100%"
+            alt="social media app" /></button>
+        <button
+          class="icon"
+          id="esa"
+          on:click={() => {
+            smartphoneState = 2;
+          }}
+          ><img
+            src="BushfiresProject/esaIcon.png"
+            height="100%"
+            width="100%"
+            alt="esa app" /></button>
+        <button
+          class="icon"
+          id="messages"
+          on:click={() => {
+            smartphoneState = 3;
+          }}
+          ><img
+            src="BushfiresProject/messagesIcon.png"
+            height="100%"
+            width="100%"
+            alt="messages app" /></button>
+        <button
+          class="icon"
+          id="phone"
+          on:click={() => {
+            smartphoneState = 4;
+          }}
+          ><img
+            src="BushfiresProject/phoneIcon.png"
+            height="100%"
+            width="100%"
+            alt="phone app" /></button>
+      </apps>
     {/if}
     <svelte:component this={scene[smartphoneState]} parent={3} />
   </viewport>
@@ -46,10 +76,16 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 1048 1816">
-    <image
-      width="1048"
-      height="1816"
-      xlink:href="BushfiresProject/smartphone.png" />
+    {#if smartphoneState == 4}
+      <image
+        width="1048"
+        height="1816"
+        xlink:href="BushfiresProject/smartphoneCalling.png" />{:else}
+      <image
+        width="1048"
+        height="1816"
+        xlink:href="BushfiresProject/smartphone.png" />{/if}
+
     <circle
       r="49"
       cx="525"
@@ -62,6 +98,15 @@
 </container>
 
 <style>
+  apps {
+    padding: 8%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 5%;
+    height: 100%;
+  }
   viewport {
     position: absolute;
     margin-top: 16.2%;
@@ -70,6 +115,7 @@
     width: 95%;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    overflow: scroll;
   }
   signal {
     position: absolute;
@@ -84,7 +130,7 @@
     border-top-right-radius: 20px;
     text-align: right;
     color: white;
-    font-size: 75%;
+    font-size: 1.5vh;
   }
   container {
     position: absolute;

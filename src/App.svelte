@@ -43,15 +43,16 @@
   {:else}
     <container in:fade={{ duration: 500 }} out:fade={{ duration: 500 }}>
       <button
-        class="startButton"
+        class="btn startButton"
         on:click={() => {
           $currentState.appState = 1;
           $currentState.showMenu = false;
-        }}>simulate a bushfire</button>
+        }}>simulate fire</button>
       <button
+        class="btn"
         on:click={() => {
           $currentState.overlayComponent = 99;
-        }}>info</button>
+        }}>more info</button>
     </container>
   {/if}
 {/if}
