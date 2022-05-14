@@ -2,6 +2,7 @@
   import { currentState } from '../lib/stores.js';
   import { fade } from 'svelte/transition';
   import OutClick from 'svelte-outclick';
+  import Info from '../ui/overlays/Info.svelte';
 
   let showInstructions = true;
 
@@ -27,9 +28,7 @@
           $currentState.appState = 2;
         }, 3000);
       }}>
-      <!-- TODO: prompt the user to think of the route in intro info also inform users that stuff may break (phones etc) as the fire gets worse, but may also come back online as it gets better -->
-
-      <instructions class="popup">info</instructions>
+      <Info />
     </OutClick>
   {/if}
 </container>
@@ -37,21 +36,6 @@
 <style>
   container {
     z-index: -1;
-  }
-  instructions {
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    background: #000;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
   }
   car {
     position: absolute;

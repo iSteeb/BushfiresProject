@@ -5,7 +5,7 @@
   import Radio from './overlays/Radio.svelte';
   import Smartphone from './overlays/Smartphone.svelte';
   import Landline from './overlays/Landline.svelte';
-  import MenuInfo from './overlays/menuInfo.svelte';
+  import Info from './overlays/Info.svelte';
   import { fly } from 'svelte/transition';
 
   const scene = {
@@ -14,7 +14,7 @@
     2: Radio,
     3: Smartphone,
     4: Landline,
-    99: MenuInfo
+    99: Info
   };
 </script>
 
@@ -23,7 +23,7 @@
 </OutClick>
 
 {#if $currentState.overlayComponent != 99 && $currentState.showMenu}
-  <menu id="true" transition:fly={{ x: -100, duration: 500 }}>
+  <menu transition:fly={{ x: -100, duration: 500 }}>
     <button
       on:click={() => {
         $currentState.showMenu = false;
@@ -34,23 +34,23 @@
       }}>reset</button>
     <button
       on:click={() => {
-        $currentState.overlayComponent = 99;
-      }}>info</button>
-    <button
-      on:click={() => {
         if ($currentState.glow == 'clickableWithGlow') {
           $currentState.glow = 'clickableNoGlow';
         } else {
           $currentState.glow = 'clickableWithGlow';
         }
       }}>toggle glow</button>
+    <button
+      on:click={() => {
+        $currentState.overlayComponent = 99;
+      }}>info</button>
   </menu>
 {:else if $currentState.overlayComponent != 99 && !$currentState.showMenu}
   <!-- REF: https://gist.github.com/philsinatra/2ab3b7c07211e4e42ce1 -->
   <svg
+    id="burger"
     viewBox="0 0 18 15"
     transition:fly={{ x: -100, duration: 500 }}
-    id="false"
     on:click={() => {
       $currentState.showMenu = true;
     }}>
@@ -67,13 +67,7 @@
 {/if}
 
 <style>
-  svg {
-    height: 4%;
-    width: auto;
-    position: absolute;
-    z-index: 999;
-  }
-  #false {
+  #burger {
     height: 4%;
     width: auto;
     position: absolute;
@@ -82,13 +76,11 @@
     transform: translate(0%, 0%);
     z-index: 999;
   }
-  #true {
-    height: 30%;
-    width: auto;
+  menu {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-54%, -50%);
     z-index: 999;
   }
 </style>

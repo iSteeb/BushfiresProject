@@ -219,9 +219,8 @@
       style="stroke:#79a8a1; stroke-width:18px"
       transform="rotate({30 * hours + minutes / 2} 408 483)" />
   </svg>
-  <Overlay />
-  <div>test</div>
 </container>
+<Overlay />
 
 <style>
   svg {
