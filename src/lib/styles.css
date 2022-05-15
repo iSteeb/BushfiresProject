@@ -31,7 +31,7 @@
 
 .clickableWithGlow {
   fill: rgb(148, 193, 112);
-  animation: glow 4s linear infinite;
+  animation: glow 2.5s linear infinite;
 }
 
 .clickableNoGlow {

@@ -94,7 +94,7 @@
     margin-left: 2.65%;
     height: 81.35%;
     width: 94.55%;
-    border-radius: 20px;
+    border-radius: 3%;
     overflow: scroll;
   }
   @media (orientation: landscape) {

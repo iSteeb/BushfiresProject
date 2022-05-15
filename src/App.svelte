@@ -19,26 +19,7 @@
     scene[$currentState.appState] == Intro
       ? 'opacity: 1'
       : 'opacity: 0.075';
-
-  const assets = [
-    'BushfiresProject/desk.png',
-    'BushfiresProject/introAssets/background.png',
-    'BushfiresProject/introAssets/midground.png',
-    'BushfiresProject/introAssets/foreground.png',
-    'BushfiresProject/introAssets/car.png',
-    'BushfiresProject/introAssets/sign.png',
-    'BushfiresProject/landline.png',
-    'BushfiresProject/smartphone.png',
-    'BushfiresProject/radio.png',
-    'BushfiresProject/laptop.png'
-  ];
 </script>
-
-<svelte:head>
-  {#each assets as href}
-    <link rel="preload" {href} as="image" />
-  {/each}
-</svelte:head>
 
 <div id="bg">
   <img
@@ -51,6 +32,8 @@
 
 <svelte:component this={scene[$currentState.appState]} />
 {#if $currentState.appState == 0}
+  <div id="title">BUSHFIRE SIMULATOR</div>
+
   {#if $currentState.overlayComponent == 99}
     <OutClick on:outclick={() => ($currentState.overlayComponent = 0)}>
       <svelte:component this={Info} />
@@ -62,12 +45,12 @@
         on:click={() => {
           $currentState.appState = 1;
           $currentState.showMenu = false;
-        }}>simulate fire</button>
+        }}>Simulate Fire</button>
       <button
         class="btn"
         on:click={() => {
           $currentState.overlayComponent = 99;
-        }}>more info</button>
+        }}>Information</button>
     </container>
   {/if}
 {/if}
@@ -97,5 +80,15 @@
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+  }
+  #title {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: 9vh;
+    color: #f5f5f5;
+    text-shadow: 0 0 10px rgb(127, 98, 26);
   }
 </style>

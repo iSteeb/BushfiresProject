@@ -4,16 +4,57 @@
 </script>
 
 {#if !$currentState.nonfunctionalComponents.includes(parent)}
-  {parent}
-
+  <div class="navbar"><b>ESA Social Media Feed</b></div>
   {#each $currentState.servedAlertsIndexes as index}
-    {alerts[index].time}
-    {alerts[index].level}
-    {$currentState.roadsBlocked}
-    {alerts[index].threat}
-    {alerts[index].fullText}<br /><br />
+    <div class="alert">
+      <p>
+        <b>ACT Emergency Services Agency</b>
+        <i>{alerts[index].time}</i>
+      </p>
+      <p>
+        This is a(n) {alerts[index].level} level bushfire warning. {alerts[
+          index
+        ].threat}
+        {$currentState.roadsBlocked
+          ? 'The fire has caused aprinciple road on your evacuation route to be blocked. Do you have an alternate route to take? '
+          : ''}
+        {alerts[index].fullText}
+      </p>
+      <div class="like">👍like 💬comment</div>
+    </div>
   {/each}
 {:else}
-  the {parent} is broken
+  <div class="error">
+    <p>Error: could not connect to the internet.</p>
+  </div>
 {/if}
-<!-- TODO: social media component -->
+
+<style>
+  .navbar {
+    width: 100%;
+    background-color: cornflowerblue;
+    color: darkslategray;
+    padding-left: 5%;
+    font-size: min(5vh, 5vw);
+  }
+  .error {
+    padding-top: 25%;
+    text-align: center;
+  }
+  .alert {
+    margin: 5% 15% 0% 15%;
+    padding: 2%;
+    background-color: slategrey;
+    border-radius: 10px;
+  }
+  .alert i {
+    font-size: 8px;
+  }
+  .alert b {
+    color: #0b182d;
+  }
+  .like {
+    text-align: right;
+    font-size: 8px;
+  }
+</style>

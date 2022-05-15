@@ -105,8 +105,9 @@
     justify-content: center;
     align-content: flex-start;
     gap: 5%;
-    height: 100%;
+    height: 50%;
   }
+
   viewport {
     position: absolute;
     margin-top: 16.2%;
