@@ -110,6 +110,9 @@
         nextTime = Date.parse(alerts[$currentState.gameState + 1].time);
       }
     }, 250);
+    setTimeout(() => {
+      $currentState.overlayComponent = 99;
+    }, 3000);
   });
 </script>
 

@@ -14,9 +14,8 @@
         <b>{alerts[index].time} <update>UPDATE</update></b>
       </p>
       <p>
-        This is a(n) {alerts[index].level} level bushfire warning. {alerts[
-          index
-        ].threat}
+        This is a{#if alerts[index].level != 'watch and act'}n{/if}
+        {alerts[index].level} level bushfire warning. {alerts[index].threat}
         {$currentState.roadsBlocked
           ? 'The fire has caused aprinciple road on your evacuation route to be blocked. Do you have an alternate route to take? '
           : ''}

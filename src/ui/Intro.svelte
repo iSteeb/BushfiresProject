@@ -5,11 +5,6 @@
   import Info from '../ui/overlays/Info.svelte';
 
   let showInstructions = true;
-
-  // disable scrolling because overflow: hidden doesn't work
-  window.onscroll = () => {
-    window.scrollTo(0, 0);
-  };
 </script>
 
 <container transition:fade={{ delay: 500, duration: 1500 }}>

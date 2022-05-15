@@ -25,6 +25,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+  max-height: 50%;
+  overflow: scroll;
 }
 
 .popup h1 {

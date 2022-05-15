@@ -56,16 +56,25 @@
 {/if}
 
 {#if $currentState.appState == 3}
-  <container in:fade={{ duration: 1500 }} out:fade={{ duration: 250 }}>
+  <div in:fade={{ duration: 1500 }} out:fade={{ duration: 250 }}>
     <OutClick
       on:outclick={() => {
         $currentState = Object.assign({}, defaultState);
       }}>
-      <end class="popup">
-        final time: {$finalTime} click outside to reset
-      </end>
+      <div class="popup">
+        <h1>Congratulations!</h1>
+        <p style="text-align:center">
+          <br />Final Time:
+          <b style="color: rgb(212, 35, 35)">{$finalTime}</b>
+        </p>
+        <br />
+        <p>
+          Quick decision making and actions are crucial to surviving a bushfire
+          event. Do you think you can improve on your time with more practice?
+        </p>
+      </div>
     </OutClick>
-  </container>
+  </div>
 {/if}
 
 <style>
