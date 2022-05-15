@@ -7,21 +7,17 @@
 </script>
 
 <!-- phone only -->
-{#if !$currentState.nonfunctionalComponents.includes(parent)}
-  {#each $currentState.servedAlertsIndexes as index}
-    {#if alerts[index].level == 'emergency warning'}
-      <div class="message">
-        {alerts[index].time}
-        {alerts[index].level}
-        {$currentState.roadsBlocked}
-        {alerts[index].threat}
-        {alerts[index].fullText}
-      </div>
-    {/if}
-  {/each}
-{:else}
-  <div id="loading">Could not load messages...</div>
-{/if}
+{#each $currentState.servedAlertsIndexes as index}
+  {#if alerts[index].level == 'emergency warning'}
+    <div class="message">
+      {alerts[index].time}
+      {alerts[index].level}
+      {$currentState.roadsBlocked}
+      {alerts[index].threat}
+      {alerts[index].fullText}
+    </div>
+  {/if}
+{/each}
 
 <style>
   #loading {

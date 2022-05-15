@@ -18,11 +18,6 @@
   let speedFactor = 0;
   let nextTime;
 
-  // reenable scrolling
-  window.onscroll = () => {
-    window.scrollTo(window.scrollX, window.scrollY);
-  };
-
   function progressGame() {
     $currentState.gameState += 1;
 
@@ -31,11 +26,6 @@
       componentBreaker($currentState.gameState);
       componentFixer($currentState.gameState);
       roadBlockToggle($currentState.gameState);
-      getIndexes($currentState.gameState);
-    } else if ($currentState.gameState == alerts.length - 1) {
-      time.setTime(Date.parse(alerts[$currentState.gameState].time));
-      $currentState.roadsBlocked = false;
-      $currentState.nonfunctionalComponents = [];
       getIndexes($currentState.gameState);
     } else {
       $finalTime = new Date(Date.now() - startTime.getTime())
@@ -123,9 +113,6 @@
   });
 </script>
 
-{#if $currentState.gameState >= alerts.length - 1}
-  Game Over - Click the the clock? to Continue {$currentState.gameState}
-{/if}
 <!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <container
   in:fade={{ delay: 500, duration: 1500 }}

@@ -1,5 +1,5 @@
 <script>
-  import { currentState, DISPLAYLIMIT } from '../../lib/stores.js';
+  import { currentState } from '../../lib/stores.js';
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
   import FiresSite from './applications/FiresSite.svelte';
   import MessagesApp from './applications/MessagesApp.svelte';

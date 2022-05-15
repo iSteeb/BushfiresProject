@@ -22,8 +22,8 @@ export const defaultState = {
   roadsBlocked: false
 };
 
-export const DISPLAYLIMIT = 3;
-export const THRESHOLD = 0.5;
+export const DISPLAYLIMIT = 5;
+export const THRESHOLD = 0.75;
 export const AUDIOSETTINGS = {
   lang: 'en-AU',
   loop: true,
@@ -57,10 +57,10 @@ export const alerts = [
     shortText: 'short text 3 here'
   },
   {
-    time: 'January 29, 2020 15:00:00',
-    level: 'advice',
-    threat: 'There is no longer any threat.',
-    fullText: 'The fire is entirely contained.',
-    shortText: 'The fire is entirely contained.'
+    time: '',
+    level: '',
+    threat: '',
+    fullText: '',
+    shortText: ''
   }
 ];

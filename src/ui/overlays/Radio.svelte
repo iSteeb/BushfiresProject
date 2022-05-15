@@ -52,7 +52,6 @@
   });
 </script>
 
-{$currentState.gameState}
 <container>
   <svg
     version="1.1"
@@ -108,14 +107,14 @@
   }
   @media (orientation: landscape) {
     svg {
-      height: 70vh;
+      height: 50vh;
       width: auto;
     }
   }
 
   @media (orientation: portrait) {
     svg {
-      width: 80vw;
+      width: 50vw;
       height: auto;
     }
   }

@@ -16,3 +16,4 @@
 {:else}
   the {parent} is broken
 {/if}
+<!-- TODO: social media component -->

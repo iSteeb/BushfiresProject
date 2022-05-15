@@ -14,6 +14,12 @@
     3: false
   };
 
+  $: bgOpacity =
+    scene[$currentState.appState] == false ||
+    scene[$currentState.appState] == Intro
+      ? 'opacity: 1'
+      : 'opacity: 0.075';
+
   const assets = [
     'BushfiresProject/desk.png',
     'BushfiresProject/introAssets/background.png',
@@ -33,6 +39,15 @@
     <link rel="preload" {href} as="image" />
   {/each}
 </svelte:head>
+
+<div id="bg">
+  <img
+    style={bgOpacity}
+    height="100%"
+    width="100%"
+    src="BushfiresProject/bg.png"
+    alt="bg" />
+</div>
 
 <svelte:component this={scene[$currentState.appState]} />
 {#if $currentState.appState == 0}
@@ -76,5 +91,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  #bg {
+    position: absolute;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
   }
 </style>
