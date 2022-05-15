@@ -45,12 +45,12 @@
         on:click={() => {
           $currentState.appState = 1;
           $currentState.showMenu = false;
-        }}>Simulate Fire</button>
+        }}>simulate fire</button>
       <button
         class="btn"
         on:click={() => {
           $currentState.overlayComponent = 99;
-        }}>Information</button>
+        }}>information</button>
     </container>
   {/if}
 {/if}

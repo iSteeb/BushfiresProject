@@ -31,7 +31,6 @@
 
 <style>
   .navbar {
-    width: 100%;
     background-color: cornflowerblue;
     color: darkslategray;
     padding-left: 5%;
