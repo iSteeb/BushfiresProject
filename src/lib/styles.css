@@ -1,6 +1,14 @@
+@font-face {
+  font-family: 'Blockhead';
+  src: url('/BushfiresProject/BlockheadBold.woff2') format('woff2'),
+    url('/BushfiresProject/BlockheadBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 #app {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
   height: 100vh;
   width: 100vw;
 }

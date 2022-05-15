@@ -87,8 +87,10 @@
     left: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
-    font-size: 9vh;
+    font-size: 12vh;
     color: #f5f5f5;
     text-shadow: 0 0 10px rgb(127, 98, 26);
+    font-family: Blockhead;
+    font-weight: bold;
   }
 </style>
