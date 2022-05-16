@@ -19,6 +19,7 @@
         {$currentState.roadsBlocked
           ? 'The fire has caused aprinciple road on your evacuation route to be blocked. Do you have an alternate route to take? '
           : ''}
+        {alerts[index].shortText}
         {alerts[index].fullText}
       </p>
       <ul>
@@ -67,9 +68,6 @@
   .alert update {
     background-color: green;
     border: 1px solid slategray;
-  }
-  .alert i {
-    font-size: 8px;
   }
   .alert b {
     color: #0b182d;

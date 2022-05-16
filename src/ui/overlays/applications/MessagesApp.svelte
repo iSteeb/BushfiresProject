@@ -3,7 +3,6 @@
 
   let alertIndexes = $currentState.servedAlertsIndexes;
   alertIndexes.reverse();
-  export let parent;
 </script>
 
 <!-- phone only -->
@@ -20,11 +19,6 @@
 {/each}
 
 <style>
-  #loading {
-    width: 100%;
-    position: relative;
-    text-align: center;
-  }
   .message {
     margin-left: 1%;
     margin-top: 1%;

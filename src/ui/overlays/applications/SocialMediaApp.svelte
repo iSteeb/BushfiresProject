@@ -17,6 +17,7 @@
         {$currentState.roadsBlocked
           ? 'The fire has caused aprinciple road on your evacuation route to be blocked. Do you have an alternate route to take? '
           : ''}
+        {alerts[index].shortText}
         {alerts[index].fullText}
       </p>
       <div class="like">👍like 💬comment</div>

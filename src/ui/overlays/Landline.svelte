@@ -144,8 +144,8 @@
     dial {
       position: fixed;
       top: 55%;
-      left: 52%;
-      transform: translate(-50%, -50%);
+      left: 50vw;
+      transform: translate(-35%, -50%);
     }
   }
 </style>

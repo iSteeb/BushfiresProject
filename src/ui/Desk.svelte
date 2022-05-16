@@ -23,8 +23,8 @@
 
     if ($currentState.gameState < alerts.length - 1) {
       time.setTime(Date.parse(alerts[$currentState.gameState].time));
-      componentBreaker($currentState.gameState);
       componentFixer($currentState.gameState);
+      componentBreaker($currentState.gameState);
       roadBlockToggle($currentState.gameState);
       getIndexes($currentState.gameState);
     } else {
@@ -50,7 +50,10 @@
     let rand = Math.random();
     if (rand >= THRESHOLD && alerts[alertIndex].level == 'emergency warning') {
       let brokenComponent = Math.floor(Math.random() * 4) + 1;
-      if (!$currentState.nonfunctionalComponents.includes(brokenComponent)) {
+      if (
+        !$currentState.nonfunctionalComponents.includes(brokenComponent) &&
+        $currentState.nonfunctionalComponents.length < 4
+      ) {
         $currentState.nonfunctionalComponents.push(brokenComponent);
       }
     }
@@ -60,13 +63,21 @@
     let rand = Math.random();
     if (
       rand >= THRESHOLD &&
-      alerts[alertIndex].level == 'advice' &&
+      alerts[alertIndex].level != 'emergency warning' &&
       $currentState.nonfunctionalComponents.length > 0
     ) {
       let i = Math.floor(
         Math.random() * $currentState.nonfunctionalComponents.length
       );
       $currentState.nonfunctionalComponents.splice(i, 1);
+    } else if (
+      rand >= THRESHOLD * 1.5 &&
+      alerts[alertIndex].level == 'emergency warning' &&
+      $currentState.nonfunctionalComponents.length > 0
+    ) {
+      let i = Math.floor(
+        Math.random() * $currentState.nonfunctionalComponents.length
+      );
     }
   }
 
