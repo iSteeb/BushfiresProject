@@ -1,6 +1,7 @@
 <script>
   import { currentState } from '../lib/stores.js';
   import { fade } from 'svelte/transition';
+  // this may appear as a problem ('cannot find module svelte-outclick') however, the imported component is completely functional and does import correctly
   import OutClick from 'svelte-outclick';
   import Info from '../ui/overlays/Info.svelte';
 
@@ -16,6 +17,8 @@
   <slidingForeground />
   <car />
   {#if showInstructions}
+    <!-- the OutClick wrapper around a component means any clicks (mousedown or touchstart events) outside of that component trigger an action-->
+    <!-- this sets a 3 second timeout to allow the viewer to view the sign transition before progressing to the next screen -->
     <OutClick
       on:outclick={() => {
         showInstructions = false;
@@ -29,6 +32,9 @@
 </container>
 
 <style>
+  /* the intro screen animation is entirely CSS, with responsive calculations to ensure the correct dimensions and aspect ratio are maintained  */
+  /* a very wide looping background is set, and then scrolled infinitely to create the animation */
+  /* to create a parallax effect, layers of the background have been split to animate at different rates */
   container {
     z-index: -1;
   }

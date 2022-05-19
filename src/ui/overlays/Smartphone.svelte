@@ -5,6 +5,8 @@
   import MessagesApp from './applications/MessagesApp.svelte';
   import PhoneApp from './applications/PhoneApp.svelte';
 
+  // like the component overlay index, this state sets the smartphone to show the home screen or the specific chosen application
+
   let smartphoneState = 0;
 
   const scene = {
@@ -17,10 +19,12 @@
 </script>
 
 <container>
+  <!-- like real smartphones, and to show to users whether the phone is functional or not, a top bar is rendered above the viewport with signal information -->
   <signal>
     {#if $currentState.nonfunctionalComponents.includes(3)}NO{:else}FULL{/if} SIGNAL
   </signal>
   <viewport>
+    <!-- 'home screen' on the smartphone, showing sub-component (app) icons-->
     {#if smartphoneState == 0}
       <apps>
         <button
@@ -69,6 +73,7 @@
             alt="phone app" /></button>
       </apps>
     {/if}
+    <!-- on top, Svelte renders the subcomponent (if any selected). the parent parameter passes down to the sub-component what the container is, specifically to reference whether the parent component is functional or not -->
     <svelte:component this={scene[smartphoneState]} parent={3} />
   </viewport>
   <svg

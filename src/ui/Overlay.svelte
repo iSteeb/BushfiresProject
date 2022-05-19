@@ -1,4 +1,5 @@
 <script>
+  // this may appear as a problem ('cannot find module svelte-outclick') however, the imported component is completely functional and does import correctly
   import OutClick from 'svelte-outclick';
   import { currentState, defaultState } from '../lib/stores.js';
   import Laptop from './overlays/Laptop.svelte';
@@ -18,10 +19,15 @@
   };
 </script>
 
+<!-- the OutClick wrapper around a component means any clicks (mousedown or touchstart events) outside of that component trigger an action-->
 <OutClick on:outclick={() => ($currentState.overlayComponent = 0)}>
+  <!-- the svelte:component tag functions as shorthand for an if/elseif block of cases for which component to render -->
+  <!-- this block sets the correct overlay -->
   <svelte:component this={scene[$currentState.overlayComponent]} />
 </OutClick>
 
+<!-- the menu buttons should only be visible if there is no info overlay on top (as the info overlay is triggered from the menu and is the highest z-index component) and if it is meant to be visible-->
+<!-- this block shows the correct menu state (burger button, or menu itself) -->
 {#if $currentState.overlayComponent != 99 && $currentState.showMenu}
   <menu transition:fly={{ x: -100, duration: 500 }}>
     <button
@@ -49,8 +55,9 @@
         $currentState.overlayComponent = 99;
       }}>help</button>
   </menu>
-{:else if $currentState.overlayComponent != 99 && !$currentState.showMenu}
-  <!-- REF: https://gist.github.com/philsinatra/2ab3b7c07211e4e42ce1 -->
+{:else if $currentState.overlayComponent != 99 && !$currentState.showMenu
+
+<!-- REF: https://gist.github.com/philsinatra/2ab3b7c07211e4e42ce1 -->
   <svg
     id="burger"
     viewBox="0 0 18 15"

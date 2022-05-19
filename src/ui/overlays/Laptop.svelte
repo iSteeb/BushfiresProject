@@ -3,6 +3,7 @@
   import SocialMediaApp from './applications/SocialMediaApp.svelte';
   import FiresSite from './applications/FiresSite.svelte';
 
+  // like the component overlay index, this state sets the laptop to show the home screen or the specific chosen application
   let laptopState = 0;
 
   const scene = {
@@ -14,6 +15,7 @@
 
 <container>
   <viewport>
+    <!-- 'home screen' on the laptop, showing sub-component (website) icons-->
     {#if laptopState == 0}
       <bookmarks>
         <button
@@ -40,6 +42,7 @@
             alt="esa app" /></button>
       </bookmarks>
     {/if}
+    <!-- on top, Svelte renders the subcomponent (if any selected). the parent parameter passes down to the sub-component what the container is, specifically to reference whether the parent component is functional or not -->
     <svelte:component this={scene[laptopState]} parent={1} />
   </viewport>
 

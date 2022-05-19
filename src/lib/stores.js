@@ -1,38 +1,43 @@
 import { writable } from 'svelte/store';
 
+// track the state of the application
 export const currentState = writable({
   appState: 0, // 0 == uninitialized; 1 == introduction; 2 == game; 3 == end
-  gameState: -1, // index of the current scenario
-  showMenu: true,
-  glow: 'clickableWithGlow',
-  overlayComponent: 0,
-  nonfunctionalComponents: [], // array of broken components
-  servedAlertsIndexes: [], // array of alerts
-  roadsBlocked: false
+  gameState: -1, // index of the current scenario, begins at -1 as starting the game immediately increments to 0
+  showMenu: true, // menu is initially visible on the home screen, then its state is controlled by the app/user
+  glow: 'clickableWithGlow', // initially, components can glow to indicate clickability - this is designated with the name of the CSS glow class
+  overlayComponent: 0, // 0 == no overlay; 1 == Laptop; 2 == Radio; 3 == Smartphone; 4 == Landline; 99 == Info
+  nonfunctionalComponents: [], // array of broken components (as indexed above)
+  servedAlertsIndexes: [], // array of alerts that are being presented to the user
+  roadsBlocked: false // like non-functional components, but for roads
 });
 
+// resetting sets the application to it's default state
 export const defaultState = {
   appState: 0,
   gameState: -1,
   showMenu: true,
   glow: 'clickableWithGlow',
   overlayComponent: 0,
-  nonfunctionalComponents: [1, 2, 3, 4],
+  nonfunctionalComponents: [],
   servedAlertsIndexes: [],
   roadsBlocked: false
 };
 
-export const DISPLAYLIMIT = 5;
-export const THRESHOLD = 0.5;
+// APPLICATION VARIABLES
+export const DISPLAYLIMIT = 5; // max number of alerts to display at a time
+export const THRESHOLD = 0.5; // probability threshold that must be passed for a component (or road) to break or fix
 export const AUDIOSETTINGS = {
   lang: 'en-AU',
   loop: true,
   volume: 0.25
-};
+}; // audio defaults
 
+// writable variable to present the user with their final time
 export const finalTime = writable('00:00:00');
 
 // REF: https://esa.act.gov.au/emergency-warning-orroral-valley-fire
+// the large array of alerts, parsed from the above ESA page of the 2020 fire into a usable format
 export const alerts = [
   {
     time: 'January 27, 2020 14: 32: 00',

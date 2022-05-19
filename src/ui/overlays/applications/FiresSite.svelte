@@ -3,11 +3,14 @@
   export let parent;
 </script>
 
+<!-- present the content if the component is considered functional by the game, else show the appropriate error -->
+<!-- this component is designed to be responsive within the app, to be displayed correctly in portrait (phone) and landscape (laptop) -->
 {#if !$currentState.nonfunctionalComponents.includes(parent)}
   <div class="navbar">
     <b>ACT ESA</b><br />
     <p>In a life threatening emergency dial <red>Triple Zero (000)</red></p>
   </div>
+  <!-- populate the dummy ESA  page content with all the alerts that are meant to be visible (latest 5) -->
   {#each $currentState.servedAlertsIndexes as index}
     <div class="alert">
       <p>

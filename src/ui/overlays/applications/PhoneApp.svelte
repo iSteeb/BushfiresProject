@@ -3,6 +3,7 @@
   import { currentState, alerts, AUDIOSETTINGS } from '../../../lib/stores.js';
   export let parent;
   let speech = new SpeechSynthesisUtterance();
+  // default values stored in stores.js
   speech.lang = AUDIOSETTINGS.lang;
 
   let playbackEnabled = !$currentState.nonfunctionalComponents.includes(parent);
@@ -12,6 +13,9 @@
 
   let playing = false;
 
+  // component logic for the activation (button press)
+  // pause if playing, play if paused; also considering component may be considered non-functional by the game, thus falling back to a dial tone.
+  // this section also forms the basis of the message to convey through the speech synthesis, taking from template strings and the game state for the alert data.
   function toggleAlert() {
     if (playbackEnabled && $currentState.gameState >= 0) {
       let roadBlockMessage = $currentState.roadsBlocked
@@ -43,6 +47,7 @@
       }
     }
   }
+  // ensure that playback stops when the component is exited
   onDestroy(() => {
     toneAudio.pause();
     toneAudio.currentTime = 0;
@@ -50,6 +55,7 @@
   });
 </script>
 
+<!-- set the correct button state based on whether content is playing or not - content will always be playable, whether it is an error dial tone, or an alert -->
 <container>
   {#if !playing}
     <button

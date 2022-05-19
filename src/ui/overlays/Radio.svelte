@@ -6,6 +6,7 @@
   let powerState = 'off';
 
   let speech = new SpeechSynthesisUtterance();
+  // default values stored in stores.js
   speech.lang = AUDIOSETTINGS.lang;
 
   let playbackEnabled = !$currentState.nonfunctionalComponents.includes(2);
@@ -13,6 +14,9 @@
   staticAudio.loop = AUDIOSETTINGS.loop;
   staticAudio.volume = AUDIOSETTINGS.volume;
 
+  // component logic for the activation (button press)
+  // pause if playing, play if paused; also considering component may be considered non-functional by the game, thus falling back to a dial tone.
+  // this section also forms the basis of the message to convey through the speech synthesis, taking from template strings and the game state for the alert data.
   function toggleAlert() {
     powerState = powerState == 'off' ? 'on' : 'off';
 
@@ -44,7 +48,7 @@
       }
     }
   }
-
+  // ensure that playback stops when the component is exited
   onDestroy(() => {
     staticAudio.pause();
     staticAudio.currentTime = 0;
@@ -52,6 +56,7 @@
   });
 </script>
 
+<!-- set the correct button state based on whether content is playing or not - content will always be playable, whether it is an error dial tone, or an alert -->
 <container>
   <svg
     version="1.1"

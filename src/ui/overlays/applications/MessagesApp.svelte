@@ -1,11 +1,12 @@
 <script>
   import { currentState, alerts } from '../../../lib/stores.js';
 
+  // text messages appear on the phone in reverse order compared to social media posts (i.e. most recent at the bottom), hence the index order should be reversed.
   let alertIndexes = $currentState.servedAlertsIndexes;
   alertIndexes.reverse();
 </script>
 
-<!-- phone only -->
+<!-- populate a text message with an emergency alert data - emergency services only send emergency alert texts, not advice warnings -->
 {#each $currentState.servedAlertsIndexes as index}
   {#if alerts[index].level == 'emergency warning'}
     <div class="message">

@@ -10,14 +10,17 @@
   import { onMount } from 'svelte';
   import Overlay from '../ui/Overlay.svelte';
 
-  let time = new Date('January 27, 2020 14:31:59');
+  let time = new Date('January 27, 2020 14:31:59'); // 1 second before the first alert was posted in reality of the 2020 Canberra bushfire
   let hours = time.getHours();
   let minutes = time.getMinutes();
   let seconds = time.getSeconds();
-  let startTime = new Date();
-  let speedFactor = 0;
-  let nextTime;
+  let startTime = new Date(); // the time the user commenced the game stage
+  let speedFactor = 0; // a variable (controlled below based on the state of the game, that controlls the speed the in-game timer/clock progresses)
+  let nextTime; // a variable (controlled below based on the next index of the alerts array) that looks ahead to allow for skip-ahead progression
 
+  // the following function is responsible for the progression of the game at each iteration
+  // it increments the gameState, calls various helper functions to progress the game (break/fix components etc) and, if the game is over,
+  // progresses to the next screen on user input
   function progressGame() {
     $currentState.gameState += 1;
 
@@ -35,6 +38,8 @@
     }
   }
 
+  // the game is designed to only show a subset (the latest 5) of all of the released alerts
+  // this function is called on each incrementation of the gameState to update index array with only the latest 5 indexes
   function getIndexes(alertIndex) {
     $currentState.servedAlertsIndexes = [];
     while (
@@ -46,6 +51,7 @@
     }
   }
 
+  // in catastrophic events (emergency level bushfire warnings), communications may be  damaged; this function randomly models damage to these systems, with a probability threshold that must be passed (adds randomly to nonfunctionalComponents array)
   function componentBreaker(alertIndex) {
     let rand = Math.random();
     if (rand >= THRESHOLD && alerts[alertIndex].level == 'emergency warning') {
@@ -59,6 +65,7 @@
     }
   }
 
+  // damaged infrastructure is repaired when threats subside; this function randomly models repair to components, with a probability threshold that must be passed (removes randomly from nonfunctionalComponents array)
   function componentFixer(alertIndex) {
     let rand = Math.random();
     if (
@@ -80,7 +87,7 @@
       );
     }
   }
-
+  // roads can be blocked and repaired by circumstances arrising from emergency situations; this function randomly models this, with a probability threshold that must be passed (toggles roadsBlocked on if high risk and damaged, or off if low risk and repaired)
   function roadBlockToggle(alertIndex) {
     let rand = Math.random();
     if (
@@ -98,6 +105,10 @@
     }
   }
 
+  // code preceeded by $: in Svelte designates code that will re-run whenever it detects a change in value
+  // this regurlarly checks the current game's 'time' and, if if that time is after the next alert's time, it progresess the game
+  // the game is designed to only progress automatically until the last alert and then not progres further without user input, hence alerts.length -1
+
   $: if (
     time.getTime() > nextTime &&
     $currentState.gameState < alerts.length - 1
@@ -105,12 +116,18 @@
     progressGame();
   }
 
+  // code preceeded by $: in Svelte designates code that will re-run whenever it detects a change in value
+  // this function keeps the clock speed factor in line i.e. fast time if the game is in the 'playing' state, and no progression if the game is in the 'paused' state (menu or component open, to allow people to read the alerts)
   $: if ($currentState.showMenu || $currentState.overlayComponent != 0) {
     speedFactor = 0;
   } else {
     speedFactor = 11250;
   }
 
+  // onMount runs once when the component is first mounted.
+  // update the current in-game time (a sped up progression of time beggining from the time of the first alert) and set the correct nextTime if there is one to set
+  // 250ms was chosen as the regular interval as it provided a balance between smooth, regular updates without overwhelming the browser with too many update requests
+  // also sets an intial timeout of 3 seconds to pop up an instructions note for users to learn the UI
   onMount(() => {
     setInterval(() => {
       time = new Date(time.getTime() + speedFactor);
@@ -127,7 +144,6 @@
   });
 </script>
 
-<!-- REF: https://stackoverflow.com/questions/7844399/responsive-image-map -->
 <container
   in:fade={{ delay: 500, duration: 1500 }}
   out:fade={{ duration: 250 }}>

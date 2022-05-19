@@ -2,6 +2,8 @@
 
 The Bushfire Simulator is a prototype web application built on a Vite/Svelte framework. It is designed to simulate a bushfire scenario as a tool for users to use to rehearse their bushfire survival plans.
 
+This application can be found live at http://www.duz.ie/BushfiresProject/
+
 npm run dev
 OR
 npm run build; npm run preview
@@ -39,3 +41,8 @@ Specifically, these licenses pertain to:
 - Misc Icons
   - Various icons used for buttons or components taken from this pack - some modified to better fit the theme colours and some manually traced into SVG paths for button hitboxes.
   - license_certificate_TK875XB6JC
+- SVG Menu Buger (Overlay.svelte lines 61-77)
+  - Used as-is, except adding the on:click functionality
+  - Licensed for use worldwide in GitHub projects by the GitHub Open Source License
+- OutClick Dependency
+  - Used as-is (note https://github.com/babakfp/svelte-outclick/issues/6 - dependency previously utilized on:mousedown which ignores touch events, a bug that I found and reported during this project
