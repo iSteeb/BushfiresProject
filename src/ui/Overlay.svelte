@@ -55,9 +55,8 @@
         $currentState.overlayComponent = 99;
       }}>help</button>
   </menu>
-{:else if $currentState.overlayComponent != 99 && !$currentState.showMenu
-
-<!-- REF: https://gist.github.com/philsinatra/2ab3b7c07211e4e42ce1 -->
+{:else if $currentState.overlayComponent != 99 && !$currentState.showMenu}
+  <!-- REF: https://gist.github.com/philsinatra/2ab3b7c07211e4e42ce1 -->
   <svg
     id="burger"
     viewBox="0 0 18 15"
