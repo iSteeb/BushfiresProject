@@ -6,6 +6,7 @@
   import { finalTime } from './lib/stores.js';
   import OutClick from 'svelte-outclick';
   import Info from './ui/overlays/Info.svelte';
+  import { onMount } from 'svelte';
 
   const scene = {
     0: false,
@@ -19,6 +20,12 @@
     scene[$currentState.appState] == Intro
       ? 'opacity: 1'
       : 'opacity: 0.075';
+
+  onMount(() => {
+    setTimeout(() => {
+      $currentState.overlayComponent = 99;
+    }, 1000);
+  });
 </script>
 
 <div id="bg">

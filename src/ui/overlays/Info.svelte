@@ -17,10 +17,16 @@
     </p>
     <p>
       This application is designed to simulate a bushfire event, by virtually
-      presenting you with notifications and alerts on which you should act in
-      accordance with your <b>Bushfire Survival Plan</b>. With these realistic
-      alerts, rehearsing your Bushfire Survival Plan has become easier and more
-      effective!
+      presenting you with the same notifications and alerts as the ESA
+      distributed during the 2020 Orroral Valley fire. You should act on these
+      in accordance with your <b>Bushfire Survival Plan</b>. With these
+      realistic alerts, rehearsing your Bushfire Survival Plan has become easier
+      and more effective!
+    </p>
+    <p>
+      Note that to use this simulation and rehearse your bushfire survival plan,
+      you must already have a plan in place. You can find information on
+      creating a plan by <b>visiting your local fire agency's website</b>.
     </p>
   {:else if $currentState.appState == 1}
     <p>
@@ -76,7 +82,6 @@
   {/if}
 </info>
 
-<!-- TODO: prompt the user to think of the route in intro info also inform users that stuff may break (phones etc) as the fire gets worse, but may also come back online as it gets better -->
 <style>
   b {
     color: rgb(212, 35, 35);
