@@ -46,3 +46,6 @@ Specifically, these licenses pertain to:
   - Licensed for use worldwide in GitHub projects by the GitHub Open Source License
 - OutClick Dependency
   - Used as-is (note https://github.com/babakfp/svelte-outclick/issues/6 - dependency previously utilized on:mousedown which ignores touch events, a bug that I found and reported during this project
+
+## Bushfire Data
+Bushfire alert data was sourced and modified from the ACT Emergency Services Agency website page on ghe Orroral Valley Bushfire: https://esa.act.gov.au/emergency-warning-orroral-valley-fire
