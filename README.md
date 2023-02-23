@@ -2,7 +2,7 @@
 
 The Bushfire Simulator is a prototype web application built on a Vite/Svelte framework. It is designed to simulate a bushfire scenario as a tool for users to use to rehearse their bushfire survival plans.
 
-This application can be found live at http://www.duz.ie/BushfiresProject/
+This application can be found live at http://isteeb.github.io/BushfiresProject/
 
 npm run dev
 OR
